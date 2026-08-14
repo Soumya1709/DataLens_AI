@@ -19,6 +19,13 @@ from services.cleaner import (
     get_dataset_summary
 )
 
+from services.profiler import (
+    get_numeric_statistics,
+    get_categorical_statistics,
+    detect_outliers,
+    get_correlations
+)
+
 
 app = FastAPI(
     title="DataLens AI",
@@ -148,6 +155,43 @@ async def cleaning_recommendations(
 
         "recommendations": (
             generate_cleaning_recommendations(df)
+        )
+    }
+    
+@app.post("/api/profile")
+async def profile_dataset(
+    file: UploadFile = File(...)
+):
+
+    contents = await file.read()
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+    return {
+        "filename": file.filename,
+
+        "dataset": {
+            "rows": int(len(df)),
+            "columns": int(len(df.columns))
+        },
+
+        "numeric_statistics": (
+            get_numeric_statistics(df)
+        ),
+
+        "categorical_statistics": (
+            get_categorical_statistics(df)
+        ),
+
+        "outliers": (
+            detect_outliers(df)
+        ),
+
+        "correlations": (
+            get_correlations(df)
         )
     }
 
