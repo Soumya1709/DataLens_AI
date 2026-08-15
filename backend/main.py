@@ -26,6 +26,14 @@ from services.profiler import (
     get_correlations
 )
 
+from services.visualizer import (
+    get_bar_chart_data,
+    get_line_chart_data,
+    get_histogram_data,
+    get_pie_chart_data,
+    get_scatter_chart_data
+)
+
 
 app = FastAPI(
     title="DataLens AI",
@@ -195,6 +203,100 @@ async def profile_dataset(
         )
     }
 
+@app.post("/api/visualize")
+async def visualize_dataset(
+    file: UploadFile = File(...),
+    chart_type: str = "bar",
+    column: str = None,
+    x_column: str = None,
+    y_column: str = None
+):
+
+    contents = await file.read()
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+    try:
+
+        if chart_type == "bar":
+
+            if not column:
+                raise ValueError(
+                    "column is required for bar chart."
+                )
+
+            result = get_bar_chart_data(
+                df,
+                column
+            )
+
+        elif chart_type == "pie":
+
+            if not column:
+                raise ValueError(
+                    "column is required for pie chart."
+                )
+
+            result = get_pie_chart_data(
+                df,
+                column
+            )
+
+        elif chart_type == "histogram":
+
+            if not column:
+                raise ValueError(
+                    "column is required for histogram."
+                )
+
+            result = get_histogram_data(
+                df,
+                column
+            )
+
+        elif chart_type == "line":
+
+            if not x_column or not y_column:
+                raise ValueError(
+                    "x_column and y_column are required."
+                )
+
+            result = get_line_chart_data(
+                df,
+                x_column,
+                y_column
+            )
+
+        elif chart_type == "scatter":
+
+            if not x_column or not y_column:
+                raise ValueError(
+                    "x_column and y_column are required."
+                )
+
+            result = get_scatter_chart_data(
+                df,
+                x_column,
+                y_column
+            )
+
+        else:
+
+            raise ValueError(
+                "Unsupported chart type."
+            )
+
+        return result
+
+    except Exception as e:
+
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
 
 @app.post("/api/clean")
 async def clean_dataset(
