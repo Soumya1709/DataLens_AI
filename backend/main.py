@@ -33,6 +33,9 @@ from services.visualizer import (
     get_pie_chart_data,
     get_scatter_chart_data
 )
+from services.insights import (
+    generate_insights
+)
 
 
 app = FastAPI(
@@ -290,6 +293,39 @@ async def visualize_dataset(
             )
 
         return result
+
+    except Exception as e:
+
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+        
+@app.post("/api/insights")
+async def analyze_dataset(
+    file: UploadFile = File(...)
+):
+
+    contents = await file.read()
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+    try:
+
+        insights = generate_insights(df)
+
+        return {
+            "filename": file.filename,
+
+            "total_insights": len(
+                insights
+            ),
+
+            "insights": insights
+        }
 
     except Exception as e:
 
