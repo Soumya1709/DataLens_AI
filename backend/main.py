@@ -36,6 +36,9 @@ from services.visualizer import (
 from services.insights import (
     generate_insights
 )
+from services.recommendations import (
+    generate_dataset_recommendations
+)
 
 
 app = FastAPI(
@@ -325,6 +328,38 @@ async def analyze_dataset(
             ),
 
             "insights": insights
+        }
+
+    except Exception as e:
+
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+        
+@app.post("/api/recommendations")
+async def dataset_recommendations(
+    file: UploadFile = File(...)
+):
+
+    contents = await file.read()
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+    try:
+
+        result = (
+            generate_dataset_recommendations(
+                df
+            )
+        )
+
+        return {
+            "filename": file.filename,
+            **result
         }
 
     except Exception as e:
