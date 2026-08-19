@@ -1,7 +1,8 @@
 import pandas as pd
 
 from services.ai_analyst import (
-    build_analysis_context
+    build_analysis_context,
+    create_analysis_prompt
 )
 
 
@@ -88,3 +89,34 @@ def test_chart_recommendations():
     assert len(
         result["chart_recommendations"]
     ) > 0
+    
+def test_create_analysis_prompt():
+
+    df = create_test_dataframe()
+
+    context = build_analysis_context(df)
+
+    prompt = create_analysis_prompt(
+        context
+    )
+
+    assert isinstance(
+        prompt,
+        str
+    )
+
+    assert "DataLens AI" in prompt
+
+    assert "Executive Summary" in prompt
+
+    assert "Key Findings" in prompt
+
+    assert "Data Quality" in prompt
+
+    assert "Business Recommendations" in prompt
+
+    assert "Suggested Visualizations" in prompt
+
+    assert "Sales" in prompt
+
+    assert "Profit" in prompt

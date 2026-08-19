@@ -67,3 +67,65 @@ def build_analysis_context(
     }
 
     return context
+
+def create_analysis_prompt(context):
+    """
+    Create a structured prompt for the AI analyst.
+    """
+
+    prompt = f"""
+You are DataLens AI, an expert data analyst.
+
+Analyze the dataset using ONLY the information
+provided below.
+
+Your job is to explain the findings clearly to a
+business user who may not have a technical background.
+
+DATASET INFORMATION:
+{context["dataset"]}
+
+STATISTICAL PROFILE:
+{context["profile"]}
+
+DETECTED INSIGHTS:
+{context["insights"]}
+
+RECOMMENDED CHARTS:
+{context["chart_recommendations"]}
+
+
+Provide your analysis in the following structure:
+
+1. Executive Summary
+Give a concise overview of the dataset and its
+most important findings.
+
+2. Key Findings
+List the most important patterns, relationships,
+trends, or unusual observations.
+
+3. Data Quality
+Mention missing values, duplicates, outliers,
+or other data-quality problems.
+
+4. Business Recommendations
+Give practical recommendations based only on
+the available data.
+
+5. Suggested Visualizations
+Mention which charts would be most useful and
+briefly explain why.
+
+IMPORTANT RULES:
+
+- Do not invent facts.
+- Do not make claims that are not supported by
+  the provided analysis.
+- Clearly distinguish observations from assumptions.
+- Keep the explanation concise and easy to understand.
+- Use numbers when they are available.
+- Do not say that correlation proves causation.
+"""
+
+    return prompt
