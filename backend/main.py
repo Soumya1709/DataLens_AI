@@ -40,6 +40,12 @@ from services.recommendations import (
     generate_dataset_recommendations
 )
 
+from services.ai_analyst import (
+    build_analysis_context,
+    create_analysis_prompt,
+    generate_ai_analysis
+)
+
 
 app = FastAPI(
     title="DataLens AI",
@@ -503,3 +509,55 @@ async def clean_dataset(
             )
         )
     }
+    
+@app.post("/api/ai-analysis")
+async def ai_analysis(
+    file: UploadFile = File(...)
+):
+    """
+    Analyze an uploaded CSV or Excel file
+    using DataLens AI.
+    """
+
+    contents = await file.read()
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+    try:
+
+        context = build_analysis_context(
+            df
+        )
+
+        prompt = create_analysis_prompt(
+            context
+        )
+
+        analysis = generate_ai_analysis(
+            prompt
+        )
+
+        return {
+            "filename": file.filename,
+
+            "dataset": context["dataset"],
+
+            "analysis": analysis
+        }
+
+    except Exception as e:
+
+      print(
+        f"AI analysis error: {e}"
+     )
+
+      raise HTTPException(
+        status_code=500,
+        detail=(
+            "Unable to generate AI analysis. "
+            "Please try again."
+        )
+    )

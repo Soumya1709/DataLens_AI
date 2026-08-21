@@ -1,5 +1,12 @@
 import pandas as pd
 
+import os
+
+from dotenv import load_dotenv
+from google import genai
+import time
+
+
 from services.profiler import (
     get_numeric_statistics,
     get_categorical_statistics,
@@ -13,6 +20,23 @@ from services.insights import (
 
 from services.recommendations import (
     generate_dataset_recommendations
+)
+
+load_dotenv()
+
+
+GEMINI_API_KEY = os.getenv(
+    "GEMINI_API_KEY"
+)
+
+if not GEMINI_API_KEY:
+    raise RuntimeError(
+        "GEMINI_API_KEY is not configured."
+    )
+
+
+client = genai.Client(
+    api_key=GEMINI_API_KEY
 )
 
 
@@ -129,3 +153,76 @@ IMPORTANT RULES:
 """
 
     return prompt
+
+def generate_ai_analysis(prompt):
+    """
+    Send the analysis prompt to Gemini
+    and return the generated response.
+    """
+
+    max_attempts = 3
+
+    for attempt in range(max_attempts):
+
+        try:
+
+            response = client.models.generate_content(
+                model="gemini-3.6-flash",
+                contents=prompt
+            )
+
+            if not response.text:
+                raise RuntimeError(
+                    "Gemini returned an empty response."
+                )
+
+            return response.text
+
+        except Exception as e:
+
+            error_message = str(e)
+
+            # Retry temporary server/capacity errors
+            if (
+                "503" in error_message
+                or "UNAVAILABLE" in error_message
+            ):
+
+                if attempt < max_attempts - 1:
+
+                    wait_time = (
+                        2 ** attempt
+                    )
+
+                    print(
+                        f"Gemini temporarily unavailable. "
+                        f"Retrying in {wait_time} seconds..."
+                    )
+
+                    time.sleep(wait_time)
+
+                    continue
+
+            raise RuntimeError(
+                f"AI analysis failed: {error_message}"
+            )
+
+    raise RuntimeError(
+        "AI analysis failed after multiple attempts."
+    )
+        
+if __name__ == "__main__":
+
+    test_prompt = """
+    You are a data analyst.
+
+    Give me a one-sentence explanation
+    of why data quality is important.
+    """
+
+    result = generate_ai_analysis(
+        test_prompt
+    )
+
+    print("\nGemini response:\n")
+    print(result)

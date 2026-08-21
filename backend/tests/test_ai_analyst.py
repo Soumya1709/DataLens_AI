@@ -2,7 +2,8 @@ import pandas as pd
 
 from services.ai_analyst import (
     build_analysis_context,
-    create_analysis_prompt
+    create_analysis_prompt,
+    generate_ai_analysis
 )
 
 
@@ -120,3 +121,71 @@ def test_create_analysis_prompt():
     assert "Sales" in prompt
 
     assert "Profit" in prompt
+    
+def test_generate_ai_analysis(monkeypatch):
+
+    def fake_generate_content(
+        model,
+        contents
+    ):
+
+        class FakeResponse:
+
+            text = "This is a test AI analysis."
+
+        return FakeResponse()
+
+    monkeypatch.setattr(
+        "services.ai_analyst.client.models.generate_content",
+        fake_generate_content
+    )
+
+    result = generate_ai_analysis(
+        "Analyze this test dataset."
+    )
+
+    assert isinstance(
+        result,
+        str
+    )
+
+    assert result == (
+        "This is a test AI analysis."
+    )
+    
+def test_generate_ai_analysis_empty_response(
+    monkeypatch
+):
+
+    def fake_generate_content(
+        model,
+        contents
+    ):
+
+        class FakeResponse:
+
+            text = ""
+
+        return FakeResponse()
+
+    monkeypatch.setattr(
+        "services.ai_analyst.client.models.generate_content",
+        fake_generate_content
+    )
+
+    try:
+
+        generate_ai_analysis(
+            "Test prompt"
+        )
+
+        assert False, (
+            "Expected RuntimeError"
+        )
+
+    except RuntimeError as e:
+
+        assert (
+            "empty response"
+            in str(e).lower()
+        )
