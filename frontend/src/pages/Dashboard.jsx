@@ -2,10 +2,17 @@ import { useState } from "react";
 
 import {uploadDataset,getAIAnalysis} from "../services/api";
 
+import FileUpload from "../components/FileUpload";
+
+import DatasetSummary from "../components/DatasetSummary";
+
+import ColumnOverview from "../components/ColumnOverview";
+
 
 function Dashboard() {
 
-    const [file, setFile] = useState(null);
+    const [file, setFile] =
+        useState(null);
 
     const [uploadData, setUploadData] =
         useState(null);
@@ -19,20 +26,20 @@ function Dashboard() {
 
     const handleFileChange = (event) => {
 
-        setFile(
-            event.target.files[0]
-        );
+        const selectedFile =
+            event.target.files[0];
+
+        setFile(selectedFile);
+
+        setUploadData(null);
+
+        setAIAnalysis(null);
     };
 
 
     const handleUpload = async () => {
 
         if (!file) {
-
-            alert(
-                "Please select a CSV or Excel file."
-            );
-
             return;
         }
 
@@ -63,11 +70,6 @@ function Dashboard() {
     const handleAIAnalysis = async () => {
 
         if (!file) {
-
-            alert(
-                "Please upload a dataset first."
-            );
-
             return;
         }
 
@@ -99,85 +101,97 @@ function Dashboard() {
 
     return (
 
-        <div>
+        <main className="min-h-screen bg-gray-50">
 
-            <h1>
-                DataLens AI
-            </h1>
+            <div className="mx-auto max-w-6xl px-5 py-12">
 
-            <p>
-                AI-powered data analytics
-            </p>
+                {/* Hero */}
 
+                <header className="mb-10 text-center">
 
-            <input
-                type="file"
-                accept=".csv,.xlsx,.xls"
-                onChange={
-                    handleFileChange
-                }
-            />
+                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                        DataLens AI
+                    </h1>
 
-
-            <button
-                onClick={handleUpload}
-                disabled={loading}
-            >
-                Upload Dataset
-            </button>
-
-
-            <button
-                onClick={handleAIAnalysis}
-                disabled={loading}
-            >
-                Analyze with AI
-            </button>
-
-
-            {uploadData && (
-
-                <div>
-
-                    <h2>
-                        Dataset Summary
-                    </h2>
-
-                    <p>
-                        Rows:{" "}
-                        {uploadData.rows}
+                    <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-500">
+                        Turn your data into meaningful
+                        insights with AI-powered analytics.
                     </p>
 
-                    <p>
-                        Columns:{" "}
-                        {uploadData.columns}
-                    </p>
-
-                    <p>
-                        Duplicate Rows:{" "}
-                        {uploadData.duplicate_rows}
-                    </p>
-
-                </div>
-            )}
+                </header>
 
 
-            {aiAnalysis && (
+                {/* Upload */}
 
-                <div>
+                <FileUpload
+                    file={file}
+                    onFileChange={
+                        handleFileChange
+                    }
+                    onUpload={
+                        handleUpload
+                    }
+                    loading={loading}
+                />
 
-                    <h2>
-                        AI Analysis
-                    </h2>
 
-                    <pre>
-                        {aiAnalysis}
-                    </pre>
+                {/* Dataset information */}
 
-                </div>
-            )}
+                {uploadData && (
 
-        </div>
+                    <>
+
+                        <DatasetSummary
+                            data={uploadData}
+                        />
+
+                        <ColumnOverview
+                            data={uploadData}
+                        />
+
+
+                        <div className="mt-8 flex justify-center">
+
+                            <button
+                                onClick={
+                                    handleAIAnalysis
+                                }
+                                disabled={loading}
+                                className="rounded-lg bg-gray-900 px-7 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                {loading
+                                    ? "Analyzing..."
+                                    : "Analyze with AI"
+                                }
+                            </button>
+
+                        </div>
+
+                    </>
+                )}
+
+
+                {/* AI Preview */}
+
+                {aiAnalysis && (
+
+                    <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+
+                        <h2 className="mb-4 text-2xl font-semibold text-gray-900">
+                            AI Analysis
+                        </h2>
+
+                        <pre className="whitespace-pre-wrap leading-7 text-gray-600">
+                            {aiAnalysis}
+                        </pre>
+
+                    </section>
+
+                )}
+
+            </div>
+
+        </main>
     );
 }
 
