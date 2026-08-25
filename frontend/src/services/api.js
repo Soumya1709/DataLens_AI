@@ -32,4 +32,42 @@ export const getAIAnalysis = async (file) => {
     return response.data;
 };
 
+export const getCleaningRecommendations = async (
+    file
+) => {
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    const response = await API.post(
+        "/api/clean/recommendations",
+        formData
+    );
+
+    return response.data;
+};
+
+export const cleanDataset = async (
+    file,
+    operations
+) => {
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    formData.append(
+        "operations",
+        JSON.stringify(operations)
+    );
+
+    const response = await API.post(
+        "/api/clean",
+        formData
+    );
+
+    return response.data;
+};
+
 export default API;

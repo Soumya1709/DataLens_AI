@@ -7,6 +7,7 @@ import FileUpload from "../components/FileUpload";
 import DatasetSummary from "../components/DatasetSummary";
 
 import ColumnOverview from "../components/ColumnOverview";
+import CleaningPanel from "../components/CleaningPanel";
 
 
 function Dashboard() {
@@ -147,6 +148,10 @@ function Dashboard() {
 
                         <ColumnOverview
                             data={uploadData}
+                        />
+
+                        <CleaningPanel
+                           file={file}
                         />
 
 
