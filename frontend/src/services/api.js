@@ -70,4 +70,21 @@ export const cleanDataset = async (
     return response.data;
 };
 
+export const getProfile = async (file) => {
+
+    const formData = new FormData();
+
+    formData.append(
+        "file",
+        file
+    );
+
+    const response = await API.post(
+        "/api/profile",
+        formData
+    );
+
+    return response.data;
+};
+
 export default API;

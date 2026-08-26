@@ -8,6 +8,7 @@ import DatasetSummary from "../components/DatasetSummary";
 
 import ColumnOverview from "../components/ColumnOverview";
 import CleaningPanel from "../components/CleaningPanel";
+import ProfilingPanel from "../components/ProfilingPanel";
 
 
 function Dashboard() {
@@ -151,6 +152,10 @@ function Dashboard() {
                         />
 
                         <CleaningPanel
+                           file={file}
+                        />
+
+                        <ProfilingPanel
                            file={file}
                         />
 
