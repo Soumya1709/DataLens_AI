@@ -585,3 +585,25 @@ async def ai_analysis(
             "Please try again."
         )
     )
+      
+@app.post("/api/data")
+async def get_dataset_data(
+    file: UploadFile = File(...)
+):
+
+    contents = await file.read()
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+    return {
+        "columns": df.columns.tolist(),
+        "data": (
+            df.fillna("")
+            .to_dict(
+                orient="records"
+            )
+        )
+    }

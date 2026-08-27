@@ -88,3 +88,20 @@ export const getProfile = async (file) => {
 };
 
 export default API;
+
+export const getDatasetData = async (file) => {
+
+    const formData = new FormData();
+
+    formData.append(
+        "file",
+        file
+    );
+
+    const response = await API.post(
+        "/api/data",
+        formData
+    );
+
+    return response.data;
+};
