@@ -10,6 +10,9 @@ import ColumnOverview from "../components/ColumnOverview";
 import CleaningPanel from "../components/CleaningPanel";
 import ProfilingPanel from "../components/ProfilingPanel";
 import VisualizationPanel from "../components/VisualizationPanel";
+import DataHealth from "../components/DataHealth";
+import SmartInsights from "../components/SmartInsights";
+import AnalysisOverview from "../components/AnalysisOverview";
 
 
 function Dashboard() {
@@ -25,6 +28,8 @@ function Dashboard() {
 
     const [loading, setLoading] =
         useState(false);
+    const [profile, setProfile] =
+    useState(null);
 
 
     const handleFileChange = (event) => {
@@ -152,13 +157,32 @@ function Dashboard() {
                             data={uploadData}
                         />
 
+                        <AnalysisOverview
+                          uploadData={uploadData}
+                          profile={profile}
+                        />
+
+
                         <CleaningPanel
                            file={file}
                         />
 
                         <ProfilingPanel
-                           file={file}
+                          file={file}
+                          profile={profile}
+                          setProfile={setProfile}
                         />
+
+                        <DataHealth
+                           uploadData={uploadData}
+                           profile={profile}
+                        />
+
+                        <SmartInsights
+                          uploadData={uploadData}
+                          profile={profile}
+                        />
+
 
                         <VisualizationPanel
                            file={file}

@@ -26,6 +26,114 @@ import {
     Legend
 } from "recharts";
 
+function generateChartRecommendations(columns, data) {
+
+    const recommendations = [];
+
+    const numericColumns = columns.filter(
+        (column) =>
+            data.some(
+                (row) =>
+                    typeof row[column] === "number"
+            )
+    );
+
+    const categoricalColumns = columns.filter(
+        (column) =>
+            !numericColumns.includes(column)
+    );
+
+
+
+    categoricalColumns.forEach(
+        (categorical) => {
+
+            numericColumns.forEach(
+                (numeric) => {
+
+                    recommendations.push({
+
+                        type: "bar",
+
+                        xColumn: categorical,
+
+                        yColumn: numeric,
+
+                        title:
+                            `${categorical} vs ${numeric}`,
+
+                        reason:
+                            `Compare ${numeric} across different ${categorical} categories.`,
+
+                        priority: 2
+
+                    });
+
+                }
+            );
+
+        }
+    );
+
+
+    
+
+    for (
+        let i = 0;
+        i < numericColumns.length;
+        i++
+    ) {
+
+        for (
+            let j = i + 1;
+            j < numericColumns.length;
+            j++
+        ) {
+
+            const x =
+                numericColumns[i];
+
+            const y =
+                numericColumns[j];
+
+
+            recommendations.push({
+
+                type: "scatter",
+
+                xColumn: x,
+
+                yColumn: y,
+
+                title:
+                    `${x} vs ${y}`,
+
+                reason:
+                    `Explore the relationship between ${x} and ${y}.`,
+
+                priority: 1
+
+            });
+
+        }
+
+    }
+
+
+
+
+    recommendations.sort(
+        (a, b) =>
+            a.priority - b.priority
+    );
+
+
+    return recommendations.slice(
+        0,
+        6
+    );
+}
+
 
 function VisualizationPanel({ file }) {
 
@@ -46,6 +154,21 @@ function VisualizationPanel({ file }) {
 
     const [error, setError] =
         useState(null);
+
+    const recommendations =
+    useMemo(() => {
+
+        if (!dataset) {
+            return [];
+        }
+
+        return generateChartRecommendations(
+            dataset.columns,
+            dataset.data
+        );
+
+    }, [dataset]);
+
 
 
     useEffect(() => {
@@ -291,6 +414,105 @@ function VisualizationPanel({ file }) {
             {dataset && !loading && (
 
                 <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+
+                    {recommendations.length > 0 && (
+
+    <div className="border-b border-gray-200 p-5">
+
+        <div className="mb-4">
+
+            <h3 className="text-lg font-semibold text-gray-900">
+                Recommended Visualizations
+            </h3>
+
+            <p className="mt-1 text-sm text-gray-500">
+                Based on the types of columns in your dataset
+            </p>
+
+        </div>
+
+
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+
+            {recommendations.map(
+                (recommendation, index) => (
+
+                    <button
+                        key={index}
+                        type="button"
+                        onClick={() => {
+
+                            setChartType(
+                                recommendation.type
+                            );
+
+                            setXColumn(
+                                recommendation.xColumn
+                            );
+
+                            setYColumn(
+                                recommendation.yColumn
+                            );
+
+                        }}
+                        className="group rounded-xl border border-gray-200 bg-gray-50 p-4 text-left transition hover:border-gray-400 hover:bg-white"
+                    >
+
+                        <div className="flex items-start justify-between gap-3">
+
+                            <div>
+
+                                <p className="font-semibold text-gray-900">
+
+                                    {index === 0 && (
+                                        <span className="mr-2">
+                                            ⭐
+                                        </span>
+                                    )}
+
+                                    {recommendation.title}
+
+                                </p>
+
+
+                                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-500">
+
+                                    {recommendation.type ===
+                                    "bar"
+                                        ? "Bar Chart"
+                                        : "Scatter Plot"
+                                    }
+
+                                </p>
+
+                            </div>
+
+
+                            <span className="text-gray-400 transition group-hover:translate-x-1">
+
+                                →
+
+                            </span>
+
+                        </div>
+
+
+                        <p className="mt-3 text-sm leading-5 text-gray-500">
+
+                            {recommendation.reason}
+
+                        </p>
+
+                    </button>
+
+                )
+            )}
+
+        </div>
+
+    </div>
+
+)}
 
                     {/* Controls */}
 

@@ -14,10 +14,8 @@ import {
 } from "../services/api";
 
 
-function ProfilingPanel({ file }) {
+function ProfilingPanel({ file,profile, setProfile }) {
 
-    const [profile, setProfile] =
-        useState(null);
 
     const [loading, setLoading] =
         useState(false);
