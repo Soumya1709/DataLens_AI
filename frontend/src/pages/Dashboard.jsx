@@ -14,6 +14,7 @@ import DataHealth from "../components/DataHealth";
 import SmartInsights from "../components/SmartInsights";
 import AnalysisOverview from "../components/AnalysisOverview";
 import AIAnalyst from "../components/AIAnalyst";
+import AskData from "../components/AskData";
 
 
 function Dashboard() {
@@ -195,6 +196,10 @@ function Dashboard() {
                         />
 
                         <AIAnalyst
+                          file={file}
+                        />
+
+                        <AskData
                           file={file}
                         />
 

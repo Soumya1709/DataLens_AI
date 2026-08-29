@@ -106,3 +106,29 @@ export const getDatasetData = async (file) => {
     return response.data;
 };
 
+export const askDataQuestion = async (
+    file,
+    question
+) => {
+
+    const formData = new FormData();
+
+    formData.append(
+        "file",
+        file
+    );
+
+    formData.append(
+        "question",
+        question
+    );
+
+
+    const response = await API.post(
+        "/api/ask-data",
+        formData
+    );
+
+
+    return response.data;
+};

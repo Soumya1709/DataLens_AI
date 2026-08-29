@@ -6,6 +6,7 @@ from fastapi import (
     FastAPI,
     UploadFile,
     File,
+    Form,
     HTTPException
 )
 from services.cleaner import (
@@ -43,7 +44,8 @@ from services.recommendations import (
 from services.ai_analyst import (
     build_analysis_context,
     create_analysis_prompt,
-    generate_ai_analysis
+    generate_ai_analysis,
+    answer_data_question
 )
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -585,6 +587,51 @@ async def ai_analysis(
             "Please try again."
         )
     )
+      
+@app.post("/api/ask-data")
+async def ask_data(
+    file: UploadFile = File(...),
+    question: str = Form(...)
+):
+
+    if not question.strip():
+
+        raise HTTPException(
+            status_code=400,
+            detail="Question cannot be empty."
+        )
+
+
+    contents = await file.read()
+
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+
+    try:
+
+        answer = answer_data_question(
+            df,
+            question
+        )
+
+
+        return {
+            "filename": file.filename,
+            "question": question,
+            "answer": answer
+        }
+
+
+    except Exception as e:
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to answer question: {str(e)}"
+        )
       
 @app.post("/api/data")
 async def get_dataset_data(

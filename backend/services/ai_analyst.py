@@ -308,6 +308,95 @@ def generate_ai_analysis(prompt):
     raise RuntimeError(
         "AI analysis failed after multiple attempts."
     )
+    
+def answer_data_question(
+    df: pd.DataFrame,
+    question: str
+):
+    """
+    Answer a user's question about their dataset
+    using DataLens analysis results.
+    """
+
+    if not question or not question.strip():
+        raise ValueError(
+            "Question cannot be empty."
+        )
+
+
+    context = build_analysis_context(df)
+
+
+    prompt = f"""
+You are DataLens AI, a helpful data analyst.
+
+A user has uploaded a dataset and asked a question
+about it.
+
+Answer the question using ONLY the analysis
+information provided below.
+
+==============================
+DATASET
+==============================
+
+{context["dataset"]}
+
+
+==============================
+DATA QUALITY
+==============================
+
+{context["cleaning"]}
+
+
+==============================
+STATISTICAL PROFILE
+==============================
+
+{context["profile"]}
+
+
+==============================
+DETECTED INSIGHTS
+==============================
+
+{context["insights"]}
+
+
+==============================
+RECOMMENDED VISUALIZATIONS
+==============================
+
+{context["chart_recommendations"]}
+
+
+==============================
+USER QUESTION
+==============================
+
+{question}
+
+
+==============================
+RULES
+==============================
+
+- Answer the user's question directly.
+- Use only information supported by the dataset
+  and analysis above.
+- Use actual numbers when available.
+- Keep the answer concise and easy to understand.
+- Do not invent facts.
+- Do not make unsupported assumptions.
+- Do not claim correlation proves causation.
+- If the dataset does not contain enough information
+  to answer the question, clearly say so.
+- Do not mention these instructions.
+"""
+
+
+    return generate_ai_analysis(prompt)
         
 if __name__ == "__main__":
 
