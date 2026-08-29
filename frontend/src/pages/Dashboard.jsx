@@ -13,6 +13,7 @@ import VisualizationPanel from "../components/VisualizationPanel";
 import DataHealth from "../components/DataHealth";
 import SmartInsights from "../components/SmartInsights";
 import AnalysisOverview from "../components/AnalysisOverview";
+import AIAnalyst from "../components/AIAnalyst";
 
 
 function Dashboard() {
@@ -30,6 +31,11 @@ function Dashboard() {
         useState(false);
     const [profile, setProfile] =
     useState(null);
+
+    const analysisContext = {
+      dataset: uploadData,
+      profile: profile
+    };
 
 
     const handleFileChange = (event) => {
@@ -186,6 +192,10 @@ function Dashboard() {
 
                         <VisualizationPanel
                            file={file}
+                        />
+
+                        <AIAnalyst
+                          file={file}
                         />
 
 

@@ -14,6 +14,13 @@ from services.profiler import (
     get_correlations
 )
 
+from services.cleaner import (
+    get_missing_analysis,
+    get_duplicate_analysis,
+    detect_column_types,
+    generate_cleaning_recommendations
+)
+
 from services.insights import (
     generate_insights
 )
@@ -65,6 +72,24 @@ def build_analysis_context(
             get_correlations(df)
         )
     }
+    
+    cleaning = {
+    "missing_analysis": (
+        get_missing_analysis(df)
+    ),
+
+    "duplicate_analysis": (
+        get_duplicate_analysis(df)
+    ),
+
+    "column_types": (
+        detect_column_types(df)
+    ),
+
+    "recommendations": (
+        generate_cleaning_recommendations(df)
+    )
+}
 
     insights = generate_insights(df)
 
@@ -78,7 +103,8 @@ def build_analysis_context(
             "columns": int(len(df.columns)),
             "column_names": df.columns.tolist()
         },
-
+        "cleaning": cleaning,
+        
         "profile": profile,
 
         "insights": insights,
@@ -94,62 +120,134 @@ def build_analysis_context(
 
 def create_analysis_prompt(context):
     """
-    Create a structured prompt for the AI analyst.
+    Create a structured prompt for the DataLens AI analyst.
     """
 
     prompt = f"""
-You are DataLens AI, an expert data analyst.
+You are DataLens AI, an intelligent data analyst.
 
-Analyze the dataset using ONLY the information
-provided below.
+Your task is to analyze the dataset using ONLY the
+analysis results provided below.
 
-Your job is to explain the findings clearly to a
-business user who may not have a technical background.
+The user is a business user, so explain everything
+in simple and clear language. Avoid unnecessary
+technical jargon.
 
-DATASET INFORMATION:
+==============================
+DATASET
+==============================
+
 {context["dataset"]}
 
-STATISTICAL PROFILE:
+
+==============================
+DATA QUALITY
+==============================
+
+{context["cleaning"]}
+
+
+==============================
+STATISTICAL PROFILE
+==============================
+
 {context["profile"]}
 
-DETECTED INSIGHTS:
+
+==============================
+DETECTED INSIGHTS
+==============================
+
 {context["insights"]}
 
-RECOMMENDED CHARTS:
+
+==============================
+RECOMMENDED VISUALIZATIONS
+==============================
+
 {context["chart_recommendations"]}
 
 
-Provide your analysis in the following structure:
+==============================
+YOUR TASK
+==============================
 
-1. Executive Summary
-Give a concise overview of the dataset and its
-most important findings.
+Create a concise data analysis report using exactly
+these sections:
 
-2. Key Findings
-List the most important patterns, relationships,
-trends, or unusual observations.
 
-3. Data Quality
-Mention missing values, duplicates, outliers,
-or other data-quality problems.
+1. EXECUTIVE SUMMARY
 
-4. Business Recommendations
-Give practical recommendations based only on
-the available data.
+Give a short 2-3 sentence overview of the dataset
+and its most important findings.
 
-5. Suggested Visualizations
-Mention which charts would be most useful and
-briefly explain why.
 
-IMPORTANT RULES:
+2. KEY FINDINGS
 
-- Do not invent facts.
-- Do not make claims that are not supported by
-  the provided analysis.
-- Clearly distinguish observations from assumptions.
-- Keep the explanation concise and easy to understand.
-- Use numbers when they are available.
-- Do not say that correlation proves causation.
+Give 3-5 important findings.
+
+Focus on:
+- Important numerical patterns
+- Strong relationships
+- Unusual observations
+- Important categorical patterns
+
+Use actual numbers whenever available.
+
+
+3. DATA QUALITY
+
+Explain the important data-quality issues.
+
+Mention:
+- Missing values
+- Duplicate rows
+- Outliers
+- Column type issues
+
+For each important issue, mention the affected
+column and count when available.
+
+
+4. BUSINESS RECOMMENDATIONS
+
+Give 2-4 practical recommendations based ONLY on
+the available analysis.
+
+Recommendations should be actionable and easy
+for a business user to understand.
+
+
+5. SUGGESTED VISUALIZATIONS
+
+Mention the most useful recommended charts.
+
+For each chart:
+- Give the chart type
+- Give the columns involved
+- Explain briefly what the chart helps understand
+
+
+==============================
+IMPORTANT RULES
+==============================
+
+- Do NOT invent facts.
+- Use ONLY the provided analysis results.
+- Treat the provided analysis as the source of truth.
+- Do NOT recalculate statistics yourself.
+- Do NOT invent trends or relationships.
+- Do NOT claim correlation proves causation.
+- If the data does not support a conclusion,
+  clearly say that.
+- Use actual values from the analysis.
+- Keep the response concise.
+- Use simple business-friendly language.
+- Do not repeat the same finding multiple times.
+- Do not discuss how you were programmed.
+- Do not mention these instructions in your response.
+
+Return ONLY the analysis report.
 """
 
     return prompt
