@@ -311,11 +311,12 @@ def generate_ai_analysis(prompt):
     
 def answer_data_question(
     df: pd.DataFrame,
-    question: str
+    question: str,
+    conversation_history=None
 ):
     """
     Answer a user's question about their dataset
-    using DataLens analysis results.
+    using DataLens analysis results and conversation history.
     """
 
     if not question or not question.strip():
@@ -324,17 +325,54 @@ def answer_data_question(
         )
 
 
+    # --------------------------------
+    # Conversation history
+    # --------------------------------
+
+    if conversation_history is None:
+        conversation_history = []
+
+
+    history_text = ""
+
+
+    for message in conversation_history:
+
+        role = message.get(
+            "role",
+            "user"
+        )
+
+        content = message.get(
+            "content",
+            ""
+        )
+
+        history_text += (
+            f"{role.upper()}: {content}\n"
+        )
+
+
+    # --------------------------------
+    # Build DataLens analysis context
+    # --------------------------------
+
     context = build_analysis_context(df)
 
+
+    # --------------------------------
+    # Create AI prompt
+    # --------------------------------
 
     prompt = f"""
 You are DataLens AI, a helpful data analyst.
 
-A user has uploaded a dataset and asked a question
+A user has uploaded a dataset and is asking questions
 about it.
 
-Answer the question using ONLY the analysis
-information provided below.
+Use ONLY the analysis information provided below.
+
+Explain your answer in simple and clear language.
 
 ==============================
 DATASET
@@ -372,7 +410,14 @@ RECOMMENDED VISUALIZATIONS
 
 
 ==============================
-USER QUESTION
+CONVERSATION HISTORY
+==============================
+
+{history_text}
+
+
+==============================
+CURRENT USER QUESTION
 ==============================
 
 {question}
@@ -382,8 +427,10 @@ USER QUESTION
 RULES
 ==============================
 
-- Answer the user's question directly.
-- Use only information supported by the dataset
+- Answer the current question directly.
+- Use the conversation history when the user refers
+  to something mentioned earlier.
+- Use ONLY information supported by the dataset
   and analysis above.
 - Use actual numbers when available.
 - Keep the answer concise and easy to understand.

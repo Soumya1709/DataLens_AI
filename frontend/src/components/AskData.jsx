@@ -27,6 +27,9 @@ function AskData({ file }) {
     const [error, setError] =
         useState(null);
 
+    const [messages, setMessages] =
+    useState([]);
+
 
     const handleAsk = async () => {
 
@@ -54,48 +57,74 @@ function AskData({ file }) {
 
 
             const result =
-                await askDataQuestion(
-                    file,
-                    question
+    await askDataQuestion(
+        file,
+        question,
+        messages
+    );
+
+
+    setAnswer(
+        result.answer
+    );
+
+
+    setMessages(
+        (previousMessages) => [
+            ...previousMessages,
+
+            {
+                role: "user",
+                content: question
+            },
+
+            {
+                role: "assistant",
+                content: result.answer
+            }
+        ]
+    );
+
+
+    setQuestion("");
+
+
+                setAnswer(
+                    result.answer
                 );
 
+            } catch (err) {
 
-            setAnswer(
-                result.answer
-            );
+                console.error(err);
 
-        } catch (err) {
+                setError(
+                    err.response?.data?.detail ||
+                    "Unable to answer your question."
+                );
 
-            console.error(err);
+            } finally {
 
-            setError(
-                err.response?.data?.detail ||
-                "Unable to answer your question."
-            );
+                setLoading(false);
 
-        } finally {
+            }
 
-            setLoading(false);
-
-        }
-
-    };
+        };
 
 
-    const handleKeyDown = (event) => {
+        const handleKeyDown = (event) => {
 
-        if (
-            event.key === "Enter" &&
-            !event.shiftKey
-        ) {
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            handleAsk();
+                handleAsk();
 
-        }
+            }
 
-    };
+        };
 
 
     if (!file) {

@@ -108,7 +108,8 @@ export const getDatasetData = async (file) => {
 
 export const askDataQuestion = async (
     file,
-    question
+    question,
+    messages
 ) => {
 
     const formData = new FormData();
@@ -122,7 +123,11 @@ export const askDataQuestion = async (
         "question",
         question
     );
-
+    
+    formData.append(
+        "history",
+        JSON.stringify(messages)
+    );
 
     const response = await API.post(
         "/api/ask-data",

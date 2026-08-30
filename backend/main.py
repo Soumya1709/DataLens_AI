@@ -1,5 +1,5 @@
 import io
-
+import json
 import pandas as pd
 
 from fastapi import (
@@ -591,7 +591,8 @@ async def ai_analysis(
 @app.post("/api/ask-data")
 async def ask_data(
     file: UploadFile = File(...),
-    question: str = Form(...)
+    question: str = Form(...),
+    history: str = Form("[]")
 ):
 
     if not question.strip():
@@ -599,6 +600,20 @@ async def ask_data(
         raise HTTPException(
             status_code=400,
             detail="Question cannot be empty."
+        )
+
+
+    try:
+
+        conversation_history = json.loads(
+            history
+        )
+
+    except json.JSONDecodeError:
+
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid conversation history."
         )
 
 
@@ -615,7 +630,8 @@ async def ask_data(
 
         answer = answer_data_question(
             df,
-            question
+            question,
+            conversation_history
         )
 
 
