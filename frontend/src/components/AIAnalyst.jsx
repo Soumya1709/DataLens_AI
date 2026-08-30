@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {getErrorMessage} from "../utils/errorUtils";
 
 import {
     Bot,
@@ -48,16 +49,18 @@ function AIAnalyst({ file }) {
                 result.analysis
             );
 
-        } catch (err) {
+            } catch (err) {
 
-            console.error(err);
+        console.error(err);
 
-            setError(
-                err.response?.data?.detail ||
+        setError(
+            getErrorMessage(
+                err,
                 "Unable to generate AI analysis."
-            );
+            )
+        );
 
-        } finally {
+    }finally {
 
             setLoading(false);
 

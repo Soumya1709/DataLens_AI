@@ -5,6 +5,10 @@ import {
     XCircle
 } from "lucide-react";
 
+import {
+    calculateHealthScore
+} from "../utils/analysisUtils";
+
 
 function DataHealth({
     uploadData,
@@ -44,47 +48,11 @@ function DataHealth({
     );
 
 
-    let score = 100;
-
-
-    // Missing values
-    if (missingCount > 0) {
-
-        score -= Math.min(
-            20,
-            missingCount * 5
-        );
-
-    }
-
-
-    // Duplicate rows
-    if (duplicateRows > 0) {
-
-        score -= Math.min(
-            20,
-            duplicateRows * 5
-        );
-
-    }
-
-
-    // Outliers
-    if (outlierCount > 0) {
-
-        score -= Math.min(
-            20,
-            outlierCount * 5
-        );
-
-    }
-
-
-    score = Math.max(
-        0,
-        score
+    const score =
+    calculateHealthScore(
+        uploadData,
+        profile
     );
-
 
     let scoreLabel;
 

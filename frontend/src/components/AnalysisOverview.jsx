@@ -6,6 +6,10 @@ import {
     ShieldCheck
 } from "lucide-react";
 
+import {
+    calculateHealthScore
+} from "../utils/analysisUtils";
+
 
 function AnalysisOverview({
     uploadData,
@@ -46,32 +50,11 @@ function AnalysisOverview({
         );
 
 
-    let score = 100;
-
-
-    score -= Math.min(
-        20,
-        missingCount * 5
+    const score =
+    calculateHealthScore(
+        uploadData,
+        profile
     );
-
-
-    score -= Math.min(
-        20,
-        duplicateRows * 5
-    );
-
-
-    score -= Math.min(
-        20,
-        outlierCount * 5
-    );
-
-
-    score = Math.max(
-        0,
-        score
-    );
-
 
     return (
 

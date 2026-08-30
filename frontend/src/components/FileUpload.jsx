@@ -1,7 +1,90 @@
 import {Upload,FileSpreadsheet} from "lucide-react";
+import { useState } from "react";
 
 
 function FileUpload({file,onFileChange,onUpload,loading}) {
+
+    const [isDragging, setIsDragging] =
+    useState(false);
+
+    const [uploadError, setUploadError] =
+    useState(null);
+
+    const validateFile = (file) => {
+
+    if (!file) {
+        return "Please select a file.";
+    }
+
+
+    const allowedExtensions = [
+        ".csv",
+        ".xlsx",
+        ".xls"
+    ];
+
+
+    const fileName =
+        file.name.toLowerCase();
+
+
+    const isValidType =
+        allowedExtensions.some(
+            (extension) =>
+                fileName.endsWith(extension)
+        );
+
+
+    if (!isValidType) {
+
+        return (
+            "Unsupported file type. " +
+            "Please upload CSV or Excel."
+        );
+
+    }
+
+
+    const maxSize =
+        10 * 1024 * 1024;
+
+
+    if (file.size > maxSize) {
+
+        return (
+            "File is too large. " +
+            "Maximum allowed size is 10 MB."
+        );
+
+    }
+
+
+    return null;
+};
+
+const handleFile = (selectedFile) => {
+
+    const validationError =
+        validateFile(selectedFile);
+
+
+    if (validationError) {
+
+        setUploadError(
+            validationError
+        );
+
+        return;
+
+    }
+
+
+    setUploadError(null);
+
+
+    // Keep your existing upload logic here
+    handleUpload(selectedFile);
+};
 
     return (
         <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center shadow-sm">
@@ -27,12 +110,22 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
 
                 Choose File
 
-                <input
-                    type="file"
-                    accept=".csv,.xlsx,.xls"
-                    onChange={onFileChange}
-                    className="hidden"
-                />
+                        <input
+            type="file"
+            accept=".csv,.xlsx,.xls"
+            className="hidden"
+            id="dataset-upload"
+            onChange={(event) => {
+
+                const selectedFile =
+                    event.target.files?.[0];
+
+                handleFile(
+                    selectedFile
+                );
+
+            }}
+        />
 
             </label>
 

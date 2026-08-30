@@ -8,9 +8,8 @@ import {
     Sparkles
 } from "lucide-react";
 
-import {
-    askDataQuestion
-} from "../services/api";
+import {askDataQuestion} from "../services/api";
+import {getErrorMessage} from "../utils/errorUtils";
 
 
 function AskData({ file }) {
@@ -93,16 +92,18 @@ function AskData({ file }) {
                     result.answer
                 );
 
-            } catch (err) {
+                } catch (err) {
 
-                console.error(err);
+        console.error(err);
 
-                setError(
-                    err.response?.data?.detail ||
-                    "Unable to answer your question."
-                );
+        setError(
+            getErrorMessage(
+                err,
+                "Unable to answer your question."
+            )
+        );
 
-            } finally {
+    }finally {
 
                 setLoading(false);
 
