@@ -39,17 +39,16 @@ function Dashboard() {
     };
 
 
-    const handleFileChange = (event) => {
+    const handleFileChange = (selectedFile) => {
 
-        const selectedFile =
-            event.target.files[0];
+    setFile(selectedFile);
 
-        setFile(selectedFile);
+    setUploadData(null);
 
-        setUploadData(null);
+    setAIAnalysis(null);
 
-        setAIAnalysis(null);
-    };
+    setProfile(null);
+};
 
 
     const handleUpload = async () => {
@@ -80,6 +79,18 @@ function Dashboard() {
             setLoading(false);
         }
     };
+
+    const handleReset = () => {
+
+    setFile(null);
+
+    setUploadData(null);
+
+    setAIAnalysis(null);
+
+    setProfile(null);
+
+};
 
 
     const handleAIAnalysis = async () => {
@@ -118,7 +129,7 @@ function Dashboard() {
 
         <main className="min-h-screen bg-gray-50">
 
-            <div className="mx-auto max-w-6xl px-5 py-12">
+            <div className="mx-auto max-w-6xl px-4 py-8 sm:px-5 sm:py-12">
 
                 {/* Hero */}
 
@@ -204,22 +215,33 @@ function Dashboard() {
                         />
 
 
-                        <div className="mt-8 flex justify-center">
+                        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 
-                            <button
-                                onClick={
-                                    handleAIAnalysis
-                                }
-                                disabled={loading}
-                                className="rounded-lg bg-gray-900 px-7 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
-                            >
-                                {loading
-                                    ? "Analyzing..."
-                                    : "Analyze with AI"
-                                }
-                            </button>
+                    <button
+                        onClick={handleAIAnalysis}
+                        disabled={loading}
+                        className="rounded-lg bg-gray-900 px-7 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
 
-                        </div>
+                        {loading
+                            ? "Analyzing..."
+                            : "Analyze with AI"
+                        }
+
+                    </button>
+
+
+                    <button
+                        onClick={handleReset}
+                        disabled={loading}
+                        className="rounded-lg border border-gray-300 bg-white px-7 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+
+                        Upload New Dataset
+
+                    </button>
+
+                </div>
 
                     </>
                 )}
