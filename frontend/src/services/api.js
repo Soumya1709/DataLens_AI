@@ -137,3 +137,33 @@ export const askDataQuestion = async (
 
     return response.data;
 };
+
+export const exportReport = async (
+    file,
+    aiAnalysis = ""
+) => {
+
+    const formData = new FormData();
+
+    formData.append(
+        "file",
+        file
+    );
+
+    formData.append(
+        "ai_analysis",
+        aiAnalysis || ""
+    );
+
+
+    const response = await API.post(
+        "/api/export-report",
+        formData,
+        {
+            responseType: "blob"
+        }
+    );
+
+
+    return response.data;
+};

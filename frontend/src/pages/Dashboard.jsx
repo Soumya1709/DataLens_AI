@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import {uploadDataset,getAIAnalysis} from "../services/api";
+import {uploadDataset,getAIAnalysis,exportReport} from "../services/api";
 
 import FileUpload from "../components/FileUpload";
 
@@ -124,6 +124,78 @@ function Dashboard() {
         }
     };
 
+    const handleDownloadReport = async () => {
+
+    if (!file) {
+        return;
+    }
+
+
+    try {
+
+        setLoading(true);
+
+
+        const pdfBlob =
+            await exportReport(
+                file,
+                aiAnalysis || ""
+            );
+
+
+        const url =
+            window.URL.createObjectURL(
+                new Blob(
+                    [pdfBlob],
+                    {
+                        type: "application/pdf"
+                    }
+                )
+            );
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href = url;
+
+        link.download =
+            "DataLens_Report.pdf";
+
+
+        document.body.appendChild(
+            link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
+
+        window.URL.revokeObjectURL(
+            url
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Unable to generate report."
+        );
+
+
+    } finally {
+
+        setLoading(false);
+
+    }
+};
+
 
     return (
 
@@ -239,6 +311,15 @@ function Dashboard() {
 
                         Upload New Dataset
 
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={handleDownloadReport}
+                        disabled={!file || loading}
+                        className="rounded-lg border border-gray-300 bg-white px-7 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        Download Report
                     </button>
 
                 </div>

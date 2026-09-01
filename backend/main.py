@@ -9,6 +9,11 @@ from fastapi import (
     Form,
     HTTPException
 )
+from fastapi.responses import StreamingResponse
+
+from services.report_generator import (
+    generate_pdf_report
+)
 from services.cleaner import (
     get_missing_analysis,
     get_duplicate_analysis,
@@ -670,3 +675,84 @@ async def get_dataset_data(
             )
         )
     }
+    
+@app.post("/api/export-report")
+async def export_report(
+    file: UploadFile = File(...),
+    ai_analysis: str = Form("")
+):
+
+    contents = await file.read()
+
+
+    df = load_dataframe(
+        file.filename,
+        contents
+    )
+
+
+    try:
+
+        upload_data = {
+            "rows": len(df),
+            "columns": len(df.columns),
+            "missing_values": (
+                df.isna()
+                .sum()
+                .to_dict()
+            ),
+            "duplicate_rows": int(
+                df.duplicated().sum()
+            )
+        }
+
+
+        profile = {
+            "numeric_statistics": (
+                get_numeric_statistics(df)
+            ),
+
+            "categorical_statistics": (
+                get_categorical_statistics(df)
+            ),
+
+            "outliers": (
+                detect_outliers(df)
+            ),
+
+            "correlations": (
+                get_correlations(df)
+            )
+        }
+
+
+        insights = generate_insights(
+            df
+        )
+
+
+        pdf = generate_pdf_report(
+            filename=file.filename,
+            upload_data=upload_data,
+            profile=profile,
+            insights=insights,
+            ai_analysis=ai_analysis
+        )
+
+
+        return StreamingResponse(
+            pdf,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition":
+                    f'attachment; filename="DataLens_Report.pdf"'
+            }
+        )
+
+
+    except Exception as e:
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to generate report: {str(e)}"
+        )
