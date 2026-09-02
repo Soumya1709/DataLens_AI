@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 
 import { useState } from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 
 function FileUpload({
@@ -373,18 +374,32 @@ function FileUpload({
             {/* Upload Dataset */}
 
             <button
-                type="button"
-                onClick={onUpload}
-                disabled={!file || loading}
-                className="mt-6 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
-            >
+    type="button"
+    onClick={onUpload}
+    disabled={!file || loading}
+    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+>
 
-                {loading
-                    ? "Uploading..."
-                    : "Upload Dataset"
-                }
+    {loading ? (
 
-            </button>
+        <>
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+
+            Uploading...
+        </>
+
+    ) : (
+
+        <>
+            <Upload size={18} />
+
+            Upload Dataset
+        </>
+
+    )}
+
+</button>
+
 
         </div>
     );
