@@ -176,13 +176,13 @@ Create a concise data analysis report using exactly
 these sections:
 
 
-1. EXECUTIVE SUMMARY
+1. Executive Summary
 
 Give a short 2-3 sentence overview of the dataset
 and its most important findings.
 
 
-2. KEY FINDINGS
+2. Key Findings
 
 Give 3-5 important findings.
 
@@ -195,7 +195,7 @@ Focus on:
 Use actual numbers whenever available.
 
 
-3. DATA QUALITY
+3. Data Quality
 
 Explain the important data-quality issues.
 
@@ -209,7 +209,7 @@ For each important issue, mention the affected
 column and count when available.
 
 
-4. BUSINESS RECOMMENDATIONS
+4. Business Recommendations
 
 Give 2-4 practical recommendations based ONLY on
 the available analysis.
@@ -218,7 +218,7 @@ Recommendations should be actionable and easy
 for a business user to understand.
 
 
-5. SUGGESTED VISUALIZATIONS
+5. Suggested Visualizations
 
 Mention the most useful recommended charts.
 
