@@ -1,16 +1,7 @@
-import {
-    Lightbulb,
-    AlertTriangle,
-    TrendingDown,
-    TrendingUp,
-    CheckCircle
-} from "lucide-react";
+import {Lightbulb,AlertTriangle,TrendingDown,TrendingUp,CheckCircle} from "lucide-react";
 
 
-function SmartInsights({
-    uploadData,
-    profile
-}) {
+function SmartInsights({uploadData,profile}) {
 
     if (!uploadData) {
         return null;

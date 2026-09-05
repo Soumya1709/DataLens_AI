@@ -1,12 +1,6 @@
 import { useState } from "react";
 
-import {
-    MessageCircle,
-    Send,
-    Loader2,
-    AlertCircle,
-    Sparkles
-} from "lucide-react";
+import {MessageCircle,Send,Loader2,AlertCircle,Sparkles} from "lucide-react";
 
 import {askDataQuestion} from "../services/api";
 import {getErrorMessage} from "../utils/errorUtils";
@@ -14,20 +8,15 @@ import {getErrorMessage} from "../utils/errorUtils";
 
 function AskData({ file }) {
 
-    const [question, setQuestion] =
-        useState("");
+    const [question, setQuestion] =useState("");
 
-    const [answer, setAnswer] =
-        useState("");
+    const [answer, setAnswer] =useState("");
 
-    const [loading, setLoading] =
-        useState(false);
+    const [loading, setLoading] =useState(false);
 
-    const [error, setError] =
-        useState(null);
+    const [error, setError] =useState(null);
 
-    const [messages, setMessages] =
-    useState([]);
+    const [messages, setMessages] =useState([]);
 
 
     const handleAsk = async () => {

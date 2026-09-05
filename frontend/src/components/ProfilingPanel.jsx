@@ -1,27 +1,16 @@
 import { useEffect, useState } from "react";
 
-import {
-    BarChart3,
-    Calculator,
-    Tag,
-    AlertCircle,
-    GitCompare,
-    Loader2
-} from "lucide-react";
+import {BarChart3,Calculator,Tag,AlertCircle,GitCompare,Loader2} from "lucide-react";
 
-import {
-    getProfile
-} from "../services/api";
+import {getProfile} from "../services/api";
 
 
 function ProfilingPanel({ file,profile, setProfile }) {
 
 
-    const [loading, setLoading] =
-        useState(false);
+    const [loading, setLoading] =useState(false);
 
-    const [error, setError] =
-        useState(null);
+    const [error, setError] = useState(null);
 
 
     useEffect(() => {
@@ -306,9 +295,7 @@ function NumericStatistics({ data }) {
     );
 }
 
-function CategoricalStatistics({
-    data
-}) {
+function CategoricalStatistics({ data}) {
 
     if (
         !data ||
@@ -425,9 +412,7 @@ function CategoricalStatistics({
     );
 }
 
-function OutlierAnalysis({
-    data
-}) {
+function OutlierAnalysis({data}) {
 
     if (
         !data ||

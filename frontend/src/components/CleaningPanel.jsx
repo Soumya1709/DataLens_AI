@@ -1,38 +1,23 @@
 import { useEffect, useState } from "react";
 
-import {
-    AlertTriangle,
-    Copy,
-    Wrench,
-    CheckCircle,
-    Loader2
-} from "lucide-react";
+import {AlertTriangle,Copy,Wrench,CheckCircle,Loader2} from "lucide-react";
 
-import {
-    getCleaningRecommendations,
-    cleanDataset
-} from "../services/api";
+import {getCleaningRecommendations,cleanDataset} from "../services/api";
 
 
 function CleaningPanel({ file }) {
 
-    const [recommendations, setRecommendations] =
-        useState(null);
+    const [recommendations, setRecommendations] =useState(null);
 
-    const [fillOperations, setFillOperations] =
-        useState([]);
+    const [fillOperations, setFillOperations] =useState([]);
 
-    const [removeDuplicates, setRemoveDuplicates] =
-        useState(false);
+    const [removeDuplicates, setRemoveDuplicates] =useState(false);
 
-    const [result, setResult] =
-        useState(null);
+    const [result, setResult] =useState(null);
 
-    const [loading, setLoading] =
-        useState(false);
+    const [loading, setLoading] =useState(false);
 
-    const [error, setError] =
-        useState(null);
+    const [error, setError] =useState(null);
 
 
     useEffect(() => {

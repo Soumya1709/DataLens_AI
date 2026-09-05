@@ -1,20 +1,9 @@
-import {
-    Database,
-    Columns3,
-    AlertTriangle,
-    Copy,
-    ShieldCheck
-} from "lucide-react";
+import {Database,Columns3,AlertTriangle,Copy,ShieldCheck} from "lucide-react";
 
-import {
-    calculateHealthScore
-} from "../utils/analysisUtils";
+import {calculateHealthScore} from "../utils/analysisUtils";
 
 
-function AnalysisOverview({
-    uploadData,
-    profile
-}) {
+function AnalysisOverview({uploadData,profile}) {
 
     if (!uploadData) {
         return null;
@@ -127,11 +116,7 @@ function AnalysisOverview({
 }
 
 
-function StatCard({
-    icon: Icon,
-    label,
-    value
-}) {
+function StatCard({icon: Icon,label,value}) {
 
     return (
 

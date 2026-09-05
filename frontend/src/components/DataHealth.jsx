@@ -1,20 +1,9 @@
-import {
-    ShieldCheck,
-    AlertTriangle,
-    CheckCircle,
-    XCircle
-} from "lucide-react";
+import {ShieldCheck,AlertTriangle,CheckCircle,XCircle} from "lucide-react";
 
-import {
-    calculateHealthScore
-} from "../utils/analysisUtils";
+import {calculateHealthScore} from "../utils/analysisUtils";
 
 
-function DataHealth({
-    uploadData,
-    profile,
-    recommendations
-}) {
+function DataHealth({uploadData,profile,recommendations}) {
 
     if (!uploadData) {
         return null;

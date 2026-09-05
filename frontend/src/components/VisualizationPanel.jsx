@@ -1,15 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
-import {
-    BarChart3,
-    Loader2,
-    LineChart,
-    ScatterChart
-} from "lucide-react";
+import {BarChart3,Loader2,LineChart,ScatterChart} from "lucide-react";
 
-import {
-    getDatasetData
-} from "../services/api";
+import {getDatasetData} from "../services/api";
 
 import {
     ResponsiveContainer,
@@ -137,23 +130,17 @@ function generateChartRecommendations(columns, data) {
 
 function VisualizationPanel({ file }) {
 
-    const [dataset, setDataset] =
-        useState(null);
+    const [dataset, setDataset] =useState(null);
 
-    const [chartType, setChartType] =
-        useState("bar");
+    const [chartType, setChartType] =useState("bar");
 
-    const [xColumn, setXColumn] =
-        useState("");
+    const [xColumn, setXColumn] =useState("");
 
-    const [yColumn, setYColumn] =
-        useState("");
+    const [yColumn, setYColumn] =useState("");
 
-    const [loading, setLoading] =
-        useState(false);
+    const [loading, setLoading] =useState(false);
 
-    const [error, setError] =
-        useState(null);
+    const [error, setError] = useState(null);
 
     const recommendations =
     useMemo(() => {

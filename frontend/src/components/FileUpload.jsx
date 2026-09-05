@@ -6,21 +6,13 @@ import {
 } from "lucide-react";
 
 import { useState } from "react";
-import LoadingSpinner from "./LoadingSpinner";
 
 
-function FileUpload({
-    file,
-    onFileChange,
-    onUpload,
-    loading
-}) {
+function FileUpload({file,onFileChange,onUpload,loading}) {
 
-    const [isDragging, setIsDragging] =
-        useState(false);
+    const [isDragging, setIsDragging] =useState(false);
 
-    const [uploadError, setUploadError] =
-        useState(null);
+    const [uploadError, setUploadError] =useState(null);
 
 
     const validateFile = (selectedFile) => {
