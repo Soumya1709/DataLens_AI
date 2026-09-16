@@ -1,7 +1,4 @@
-export const calculateHealthScore = (
-    uploadData,
-    profile
-) => {
+export const calculateHealthScore = (uploadData,profile) => {
 
     if (!uploadData) {
         return 0;
@@ -20,18 +17,14 @@ export const calculateHealthScore = (
 
     
 
-    const duplicateRows =
-        Number(
+    const duplicateRows =Number(
             uploadData.duplicate_rows || 0
         );
 
 
    
 
-    const outlierCount =
-        Object.values(
-            profile?.outliers || {}
-        ).reduce(
+    const outlierCount =Object.values(profile?.outliers || {}).reduce(
             (total, column) =>
                 total +
                 Number(
@@ -46,26 +39,14 @@ export const calculateHealthScore = (
     let score = 100;
 
 
-    score -= Math.min(
-        20,
-        missingCount * 5
-    );
+    score -= Math.min(20,missingCount * 5);
 
 
-    score -= Math.min(
-        20,
-        duplicateRows * 5
-    );
+    score -= Math.min(20,duplicateRows * 5);
 
 
-    score -= Math.min(
-        20,
-        outlierCount * 5
-    );
+    score -= Math.min(20,outlierCount * 5);
 
 
-    return Math.max(
-        0,
-        score
-    );
+    return Math.max(0,score);
 };

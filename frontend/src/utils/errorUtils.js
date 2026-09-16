@@ -1,7 +1,4 @@
-export const getErrorMessage = (
-    error,
-    defaultMessage = "Something went wrong."
-) => {
+export const getErrorMessage = (error,defaultMessage = "Something went wrong.") => {
 
     if (!error) {
         return defaultMessage;
@@ -9,8 +6,7 @@ export const getErrorMessage = (
 
 
    
-    const detail =
-        error.response?.data?.detail;
+    const detail =error.response?.data?.detail;
 
 
     if (typeof detail === "string") {
@@ -27,9 +23,7 @@ export const getErrorMessage = (
         }
 
 
-        if (
-            detail.includes("Unsupported file type")
-        ) {
+        if (detail.includes("Unsupported file type")) {
 
             return (
                 "Unsupported file type. " +
@@ -38,9 +32,7 @@ export const getErrorMessage = (
         }
 
 
-        if (
-            detail.includes("Unable to read file")
-        ) {
+        if (detail.includes("Unable to read file")) {
 
             return (
                 "The uploaded file could not be read. " +
