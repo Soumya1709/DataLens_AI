@@ -341,22 +341,22 @@ function VisualizationPanel({ file }) {
 
             <div className="mb-6 flex items-center gap-3">
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                     <BarChart3
                         size={21}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 </div>
 
                 <div>
 
-                    <h2 className="text-2xl font-semibold text-gray-900">
+                    <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
                         Data Visualization
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Explore relationships and patterns in your data
                     </p>
 
@@ -369,7 +369,7 @@ function VisualizationPanel({ file }) {
 
             {loading && (
 
-                <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-5 text-gray-600 shadow-sm">
+                <div className="flex items-center gap-2 rounded-xl border border-[#3A2F1D] bg-[#221B12] p-5 text-[#B8AC93] shadow-sm">
 
                     <Loader2
                         size={20}
@@ -387,7 +387,7 @@ function VisualizationPanel({ file }) {
 
             {error && (
 
-                <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
 
                     {error}
 
@@ -400,19 +400,19 @@ function VisualizationPanel({ file }) {
 
             {dataset && !loading && (
 
-                <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
                     {recommendations.length > 0 && (
 
-    <div className="border-b border-gray-200 p-5">
+    <div className="border-b border-[#3A2F1D] p-5">
 
         <div className="mb-4">
 
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="font-display text-lg font-semibold text-[#F3ECDD]">
                 Recommended Visualizations
             </h3>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-[#B8AC93]">
                 Based on the types of columns in your dataset
             </p>
 
@@ -442,14 +442,14 @@ function VisualizationPanel({ file }) {
                             );
 
                         }}
-                        className="group rounded-xl border border-gray-200 bg-gray-50 p-4 text-left transition hover:border-gray-400 hover:bg-white"
+                        className="group rounded-xl border border-[#3A2F1D] bg-[#2A2116] p-4 text-left transition hover:border-[#5C4E33] hover:bg-[#221B12]"
                     >
 
                         <div className="flex items-start justify-between gap-3">
 
                             <div>
 
-                                <p className="font-semibold text-gray-900">
+                                <p className="font-semibold text-[#F3ECDD]">
 
                                     {index === 0 && (
                                         <span className="mr-2">
@@ -462,7 +462,7 @@ function VisualizationPanel({ file }) {
                                 </p>
 
 
-                                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-500">
+                                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-[#B8AC93]">
 
                                     {recommendation.type ===
                                     "bar"
@@ -475,7 +475,7 @@ function VisualizationPanel({ file }) {
                             </div>
 
 
-                            <span className="text-gray-400 transition group-hover:translate-x-1">
+                            <span className="text-[#8F8368] transition group-hover:translate-x-1">
 
                                 →
 
@@ -484,7 +484,7 @@ function VisualizationPanel({ file }) {
                         </div>
 
 
-                        <p className="mt-3 text-sm leading-5 text-gray-500">
+                        <p className="mt-3 text-sm leading-5 text-[#B8AC93]">
 
                             {recommendation.reason}
 
@@ -503,13 +503,13 @@ function VisualizationPanel({ file }) {
 
                     {/* Controls */}
 
-                    <div className="grid grid-cols-1 gap-4 border-b border-gray-200 p-5 md:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-4 border-b border-[#3A2F1D] p-5 md:grid-cols-3">
 
                         {/* Chart Type */}
 
                         <div>
 
-                            <label className="mb-2 block text-sm font-medium text-gray-700">
+                            <label className="mb-2 block text-sm font-medium text-[#B8AC93]">
 
                                 Chart Type
 
@@ -522,7 +522,7 @@ function VisualizationPanel({ file }) {
                                         event.target.value
                                     )
                                 }
-                                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-500"
+                                className="w-full rounded-lg border border-[#3A2F1D] bg-[#221B12] px-3 py-2.5 text-sm text-[#F3ECDD] outline-none focus:border-[#D9A441]"
                             >
 
                                 <option value="bar">
@@ -546,7 +546,7 @@ function VisualizationPanel({ file }) {
 
                         <div>
 
-                            <label className="mb-2 block text-sm font-medium text-gray-700">
+                            <label className="mb-2 block text-sm font-medium text-[#B8AC93]">
 
                                 X Axis
 
@@ -559,7 +559,7 @@ function VisualizationPanel({ file }) {
                                         event.target.value
                                     )
                                 }
-                                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-500"
+                                className="w-full rounded-lg border border-[#3A2F1D] bg-[#221B12] px-3 py-2.5 text-sm text-[#F3ECDD] outline-none focus:border-[#D9A441]"
                             >
 
                                 {dataset.columns.map(
@@ -584,7 +584,7 @@ function VisualizationPanel({ file }) {
 
                         <div>
 
-                            <label className="mb-2 block text-sm font-medium text-gray-700">
+                            <label className="mb-2 block text-sm font-medium text-[#B8AC93]">
 
                                 Y Axis
 
@@ -597,7 +597,7 @@ function VisualizationPanel({ file }) {
                                         event.target.value
                                     )
                                 }
-                                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-500"
+                                className="w-full rounded-lg border border-[#3A2F1D] bg-[#221B12] px-3 py-2.5 text-sm text-[#F3ECDD] outline-none focus:border-[#D9A441]"
                             >
 
                                 {numericColumns.map(
@@ -626,7 +626,7 @@ function VisualizationPanel({ file }) {
 
                         {chartData.length === 0 ? (
 
-                            <div className="flex min-h-[350px] items-center justify-center rounded-lg bg-gray-50 text-center text-sm text-gray-500">
+                            <div className="flex min-h-[350px] items-center justify-center rounded-lg bg-[#2A2116] text-center text-sm text-[#B8AC93]">
 
                                 Not enough numeric data available
                                 for this chart.
@@ -656,6 +656,7 @@ function VisualizationPanel({ file }) {
 
                                             <CartesianGrid
                                                 strokeDasharray="3 3"
+                                                stroke="#3A2F1D"
                                             />
 
                                             <XAxis
@@ -663,9 +664,11 @@ function VisualizationPanel({ file }) {
                                                 angle={-35}
                                                 textAnchor="end"
                                                 height={70}
+                                                tick={{ fill: "#B8AC93", fontSize: 12 }}
+                                                stroke="#3A2F1D"
                                             />
 
-                                            <YAxis />
+                                            <YAxis tick={{ fill: "#B8AC93", fontSize: 12 }} stroke="#3A2F1D" />
 
                                             <Tooltip />
 
@@ -674,7 +677,7 @@ function VisualizationPanel({ file }) {
                                             <Bar
                                                 dataKey="value"
                                                 name={yColumn}
-                                                fill="#374151"
+                                                fill="#D9A441"
                                                 radius={[
                                                     4,
                                                     4,
@@ -709,6 +712,7 @@ function VisualizationPanel({ file }) {
 
                                             <CartesianGrid
                                                 strokeDasharray="3 3"
+                                                stroke="#3A2F1D"
                                             />
 
                                             <XAxis
@@ -716,9 +720,11 @@ function VisualizationPanel({ file }) {
                                                 angle={-35}
                                                 textAnchor="end"
                                                 height={70}
+                                                tick={{ fill: "#B8AC93", fontSize: 12 }}
+                                                stroke="#3A2F1D"
                                             />
 
-                                            <YAxis />
+                                            <YAxis tick={{ fill: "#B8AC93", fontSize: 12 }} stroke="#3A2F1D" />
 
                                             <Tooltip />
 
@@ -728,7 +734,7 @@ function VisualizationPanel({ file }) {
                                                 type="monotone"
                                                 dataKey="value"
                                                 name={yColumn}
-                                                stroke="#374151"
+                                                stroke="#D9A441"
                                                 strokeWidth={2}
                                                 dot
                                             />
@@ -756,18 +762,22 @@ function VisualizationPanel({ file }) {
                                             }}
                                         >
 
-                                            <CartesianGrid />
+                                            <CartesianGrid stroke="#3A2F1D" />
 
                                             <XAxis
                                                 type="number"
                                                 dataKey="x"
                                                 name={xColumn}
+                                                tick={{ fill: "#B8AC93", fontSize: 12 }}
+                                                stroke="#3A2F1D"
                                             />
 
                                             <YAxis
                                                 type="number"
                                                 dataKey="y"
                                                 name={yColumn}
+                                                tick={{ fill: "#B8AC93", fontSize: 12 }}
+                                                stroke="#3A2F1D"
                                             />
 
                                             <Tooltip
@@ -782,7 +792,7 @@ function VisualizationPanel({ file }) {
                                             <Scatter
                                                 name={`${xColumn} vs ${yColumn}`}
                                                 data={chartData}
-                                                fill="#374151"
+                                                fill="#D9A441"
                                             />
 
                                         </RechartsScatterChart>
@@ -800,26 +810,26 @@ function VisualizationPanel({ file }) {
 
                     {/* Chart information */}
 
-                    <div className="border-t border-gray-200 px-5 py-4">
+                    <div className="border-t border-[#3A2F1D] px-5 py-4">
 
-                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-500">
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#B8AC93]">
 
                             <span>
-                                <strong className="text-gray-800">
+                                <strong className="text-[#F3ECDD]">
                                     X:
                                 </strong>{" "}
                                 {xColumn}
                             </span>
 
                             <span>
-                                <strong className="text-gray-800">
+                                <strong className="text-[#F3ECDD]">
                                     Y:
                                 </strong>{" "}
                                 {yColumn}
                             </span>
 
                             <span>
-                                <strong className="text-gray-800">
+                                <strong className="text-[#F3ECDD]">
                                     Points:
                                 </strong>{" "}
                                 {chartData.length}

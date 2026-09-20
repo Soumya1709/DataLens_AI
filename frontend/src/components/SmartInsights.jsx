@@ -226,22 +226,22 @@ function SmartInsights({uploadData,profile}) {
 
             <div className="mb-6 flex items-center gap-3">
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                     <Lightbulb
                         size={21}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 </div>
 
                 <div>
 
-                    <h2 className="text-2xl font-semibold text-gray-900">
+                    <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
                         Smart Insights
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Important findings detected from your dataset
                     </p>
 
@@ -265,16 +265,16 @@ function SmartInsights({uploadData,profile}) {
 
                             <div
                                 key={index}
-                                className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+                                className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-5 shadow-sm"
                             >
 
                                 <div className="flex gap-4">
 
-                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100">
+                                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2A2116]">
 
                                         <Icon
                                             size={20}
-                                            className="text-gray-700"
+                                            className="text-[#D9A441]"
                                         />
 
                                     </div>
@@ -282,14 +282,14 @@ function SmartInsights({uploadData,profile}) {
 
                                     <div>
 
-                                        <h3 className="font-semibold text-gray-900">
+                                        <h3 className="font-display font-semibold text-[#F3ECDD]">
 
                                             {insight.title}
 
                                         </h3>
 
 
-                                        <p className="mt-2 text-sm leading-6 text-gray-500">
+                                        <p className="mt-2 text-sm leading-6 text-[#B8AC93]">
 
                                             {insight.description}
 

@@ -196,20 +196,20 @@ function Dashboard() {
 
     return (
 
-        <main className="min-h-screen bg-gray-50">
+        <main className="min-h-screen bg-[#17130D]">
 
 
             {/* Navbar */}
 
-            <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
+            <nav className="sticky top-0 z-50 border-b border-[#3A2F1D] bg-[#221B12]/95 backdrop-blur">
 
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
 
                     <div className="flex items-center gap-3">
 
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#D9A441]">
 
-                            <span className="text-sm font-bold text-white">
+                            <span className="text-sm font-bold text-[#17130D]">
                                 DL
                             </span>
 
@@ -218,11 +218,11 @@ function Dashboard() {
 
                         <div>
 
-                            <p className="font-semibold text-gray-900">
+                            <p className="font-semibold text-[#F3ECDD]">
                                 DataLens AI
                             </p>
 
-                            <p className="hidden text-xs text-gray-500 sm:block">
+                            <p className="hidden text-xs text-[#B8AC93] sm:block">
                                 Intelligent Data Analytics
                             </p>
 
@@ -233,7 +233,7 @@ function Dashboard() {
 
                     <div className="flex items-center gap-2">
 
-                        <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+                        <span className="rounded-full bg-[#2A2116] px-3 py-1 text-xs font-medium text-[#B8AC93]">
                             AI Powered
                         </span>
 
@@ -251,23 +251,23 @@ function Dashboard() {
 
                 <header className="mb-10 text-center">
 
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 shadow-sm">
+                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#3A2F1D] bg-[#221B12] px-3 py-1.5 text-xs font-medium text-[#B8AC93] shadow-sm">
 
-                        <span className="h-2 w-2 rounded-full bg-gray-900"></span>
+                        <span className="h-2 w-2 rounded-full bg-[#D9A441]"></span>
 
                         Intelligent Data Analytics
 
                     </div>
 
 
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                    <h1 className="font-display text-4xl font-bold tracking-tight text-[#F3ECDD] sm:text-5xl">
 
                         Turn Data Into Insights
 
                     </h1>
 
 
-                    <p className="mx-auto mt-4 max-w-2xl text-lg leading-7 text-gray-500">
+                    <p className="mx-auto mt-4 max-w-2xl text-lg leading-7 text-[#B8AC93]">
 
                         Upload your dataset, discover hidden patterns, analyze data with AI,
                         and generate actionable insights.
@@ -281,13 +281,13 @@ function Dashboard() {
 
                 {uploadData && (
 
-                    <div className="sticky top-[73px] z-40 mb-8 overflow-x-auto rounded-xl border border-gray-200 bg-white/95 p-2 shadow-sm backdrop-blur">
+                    <div className="sticky top-[73px] z-40 mb-8 overflow-x-auto rounded-xl border border-[#3A2F1D] bg-[#221B12]/95 p-2 shadow-sm backdrop-blur">
 
                         <div className="flex min-w-max items-center justify-center gap-1">
 
                             <a
                                 href="#overview"
-                                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                                className="rounded-lg px-4 py-2 text-sm font-medium text-[#B8AC93] transition hover:bg-[#2A2116] hover:text-[#F3ECDD]"
                             >
                                 Overview
                             </a>
@@ -295,7 +295,7 @@ function Dashboard() {
 
                             <a
                                 href="#data-quality"
-                                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                                className="rounded-lg px-4 py-2 text-sm font-medium text-[#B8AC93] transition hover:bg-[#2A2116] hover:text-[#F3ECDD]"
                             >
                                 Data Quality
                             </a>
@@ -303,7 +303,7 @@ function Dashboard() {
 
                             <a
                                 href="#analysis"
-                                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                                className="rounded-lg px-4 py-2 text-sm font-medium text-[#B8AC93] transition hover:bg-[#2A2116] hover:text-[#F3ECDD]"
                             >
                                 Analysis
                             </a>
@@ -311,7 +311,7 @@ function Dashboard() {
 
                             <a
                                 href="#ai-analysis"
-                                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                                className="rounded-lg px-4 py-2 text-sm font-medium text-[#B8AC93] transition hover:bg-[#2A2116] hover:text-[#F3ECDD]"
                             >
                                 AI Analysis
                             </a>
@@ -347,11 +347,11 @@ function Dashboard() {
 
     <div className="mt-4 text-center">
 
-        <p className="text-sm font-medium text-gray-700">
+        <p className="text-sm font-medium text-[#D9A441]">
             Start by uploading your dataset
         </p>
 
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="mt-1 text-xs text-[#B8AC93]">
             DataLens AI will automatically profile, clean,
             visualize, and analyze your data.
         </p>
@@ -365,11 +365,11 @@ function Dashboard() {
 
     <div className="mt-4 text-center">
 
-        <p className="text-sm font-medium text-gray-700">
+        <p className="text-sm font-medium text-[#D9A441]">
             Your file is ready
         </p>
 
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="mt-1 text-xs text-[#B8AC93]">
             Click the upload button above to start analyzing your dataset.
         </p>
 
@@ -381,23 +381,23 @@ function Dashboard() {
 
                 {uploadData && (
 
-                    <div className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                    <div className="mt-6 rounded-xl border border-[#3A2F1D] bg-[#221B12] p-4 shadow-sm">
 
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
                             <div>
 
-                                <p className="text-sm font-semibold text-gray-900">
+                                <p className="text-sm font-semibold text-[#F3ECDD]">
                                     Dataset Status
                                 </p>
 
 
-                                <p className="mt-1 text-xs text-gray-500">
+                                <p className="mt-1 text-xs text-[#B8AC93]">
                                     Your dataset has been successfully processed.
                                 </p>
 
 
-                                <p className="mt-1 break-all text-xs text-gray-400">
+                                <p className="mt-1 break-all text-xs text-[#8F8368]">
                                     {file?.name}
                                 </p>
 
@@ -406,27 +406,27 @@ function Dashboard() {
 
                             <div className="flex flex-wrap gap-2">
 
-                                <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">
+                                <span className="inline-flex items-center gap-2 rounded-full bg-[#2A2116] px-3 py-1.5 text-xs font-medium text-[#D9A441]">
 
-                                    <span className="h-2 w-2 rounded-full bg-gray-700"></span>
+                                    <span className="h-2 w-2 rounded-full bg-[#D9A441]"></span>
 
                                     Dataset Loaded
 
                                 </span>
 
 
-                                <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">
+                                <span className="inline-flex items-center gap-2 rounded-full bg-[#2A2116] px-3 py-1.5 text-xs font-medium text-[#D9A441]">
 
-                                    <span className="h-2 w-2 rounded-full bg-gray-700"></span>
+                                    <span className="h-2 w-2 rounded-full bg-[#D9A441]"></span>
 
                                     Analysis Ready
 
                                 </span>
 
 
-                                <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">
+                                <span className="inline-flex items-center gap-2 rounded-full bg-[#2A2116] px-3 py-1.5 text-xs font-medium text-[#D9A441]">
 
-                                    <span className="h-2 w-2 rounded-full bg-gray-700"></span>
+                                    <span className="h-2 w-2 rounded-full bg-[#D9A441]"></span>
 
                                     AI Ready
 
@@ -454,12 +454,12 @@ function Dashboard() {
 
                             <div className="mb-5 mt-8">
 
-                                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-[#B8AC93]">
                                     Dataset Overview
                                 </p>
 
 
-                                <h2 className="mt-1 text-xl font-semibold text-gray-900">
+                                <h2 className="font-display mt-1 text-2xl font-semibold text-[#F3ECDD]">
                                     Understand Your Dataset
                                 </h2>
 
@@ -484,12 +484,12 @@ function Dashboard() {
 
                             <div className="mb-5 mt-12">
 
-                                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-[#B8AC93]">
                                     Data Quality
                                 </p>
 
 
-                                <h2 className="mt-1 text-xl font-semibold text-gray-900">
+                                <h2 className="font-display mt-1 text-2xl font-semibold text-[#F3ECDD]">
                                     Clean and Validate Your Data
                                 </h2>
 
@@ -522,12 +522,12 @@ function Dashboard() {
 
                             <div className="mb-5 mt-12">
 
-                                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-[#B8AC93]">
                                     Data Analysis
                                 </p>
 
 
-                                <h2 className="mt-1 text-xl font-semibold text-gray-900">
+                                <h2 className="font-display mt-1 text-2xl font-semibold text-[#F3ECDD]">
                                     Discover Patterns and Insights
                                 </h2>
 
@@ -559,12 +559,12 @@ function Dashboard() {
 
                             <div className="mb-5 mt-12">
 
-                                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-[#B8AC93]">
                                     Artificial Intelligence
                                 </p>
 
 
-                                <h2 className="mt-1 text-xl font-semibold text-gray-900">
+                                <h2 className="font-display mt-1 text-2xl font-semibold text-[#F3ECDD]">
                                     Analyze and Ask Your Data
                                 </h2>
 
@@ -591,7 +591,7 @@ function Dashboard() {
                             <button
                                 onClick={handleAIAnalysis}
                                 disabled={loading}
-                                className="rounded-lg bg-gray-900 px-7 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="rounded-lg bg-[#D9A441] px-7 py-3 font-semibold text-[#17130D] transition hover:bg-[#C2933A] disabled:cursor-not-allowed disabled:opacity-50"
                             >
 
                                 {loading
@@ -605,7 +605,7 @@ function Dashboard() {
                             <button
                                 onClick={handleReset}
                                 disabled={loading}
-                                className="rounded-lg border border-gray-300 bg-white px-7 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="rounded-lg border border-[#3A2F1D] bg-[#221B12] px-7 py-3 font-semibold text-[#F3ECDD] transition hover:bg-[#2A2116] disabled:cursor-not-allowed disabled:opacity-50"
                             >
 
                                 Upload New Dataset
@@ -622,7 +622,7 @@ function Dashboard() {
                                     !file ||
                                     loading
                                 }
-                                className="rounded-lg border border-gray-300 bg-white px-7 py-3 font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="rounded-lg border border-[#3A2F1D] bg-[#221B12] px-7 py-3 font-semibold text-[#F3ECDD] transition hover:bg-[#2A2116] disabled:cursor-not-allowed disabled:opacity-50"
                             >
 
                                 Download Report
@@ -640,33 +640,33 @@ function Dashboard() {
 
                 {aiAnalysis && (
 
-                   <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                   <section className="mt-10 rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
     <div className="mb-5 flex items-center justify-between">
 
         <div>
 
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#B8AC93]">
                 AI Generated
             </p>
 
-            <h2 className="mt-1 text-2xl font-semibold text-gray-900">
+            <h2 className="font-display mt-1 text-2xl font-semibold text-[#F3ECDD]">
                 AI Analysis
             </h2>
 
         </div>
 
 
-        <span className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600">
+        <span className="rounded-full bg-[#2A2116] px-3 py-1.5 text-xs font-medium text-[#B8AC93]">
             Generated
         </span>
 
     </div>
 
 
-    <div className="rounded-lg bg-gray-50 p-5">
+    <div className="rounded-lg bg-[#2A2116] p-5">
 
-        <pre className="whitespace-pre-wrap text-sm leading-7 text-gray-600">
+        <pre className="whitespace-pre-wrap text-sm leading-7 text-[#B8AC93]">
             {aiAnalysis}
         </pre>
 

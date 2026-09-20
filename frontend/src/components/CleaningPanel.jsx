@@ -186,22 +186,22 @@ function CleaningPanel({ file }) {
 
             <div className="mb-5 flex items-center gap-3">
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                     <Wrench
                         size={20}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 </div>
 
                 <div>
 
-                    <h2 className="text-2xl font-semibold text-gray-900">
+                    <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
                         Data Cleaning
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Fix common data quality problems
                     </p>
 
@@ -212,7 +212,7 @@ function CleaningPanel({ file }) {
 
             {loading && !recommendations && (
 
-                <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-5 text-gray-600">
+                <div className="flex items-center gap-2 rounded-xl border border-[#3A2F1D] bg-[#221B12] p-5 text-[#B8AC93]">
 
                     <Loader2
                         size={20}
@@ -228,7 +228,7 @@ function CleaningPanel({ file }) {
 
             {error && (
 
-                <div className="mb-5 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                <div className="mb-5 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
 
                     {error}
 
@@ -243,22 +243,22 @@ function CleaningPanel({ file }) {
 
                     {/* Missing Values */}
 
-                    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
                         <div className="mb-5 flex items-center gap-3">
 
                             <AlertTriangle
                                 size={20}
-                                className="text-gray-700"
+                                className="text-[#D9A441]"
                             />
 
                             <div>
 
-                                <h3 className="font-semibold text-gray-900">
+                                <h3 className="font-display font-semibold text-[#F3ECDD]">
                                     Missing Values
                                 </h3>
 
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-[#B8AC93]">
                                     Choose how to handle missing values
                                 </p>
 
@@ -276,16 +276,16 @@ function CleaningPanel({ file }) {
 
                                         <div
                                             key={item.column}
-                                            className="flex flex-col gap-3 rounded-lg bg-gray-50 p-4 sm:flex-row sm:items-center sm:justify-between"
+                                            className="flex flex-col gap-3 rounded-lg bg-[#2A2116] p-4 sm:flex-row sm:items-center sm:justify-between"
                                         >
 
                                             <div>
 
-                                                <p className="font-medium text-gray-900">
+                                                <p className="font-medium text-[#F3ECDD]">
                                                     {item.column}
                                                 </p>
 
-                                                <p className="text-sm text-gray-500">
+                                                <p className="text-sm text-[#B8AC93]">
 
                                                     {item.missing_count}
                                                     {" "}
@@ -320,7 +320,7 @@ function CleaningPanel({ file }) {
                                                         event.target.value
                                                     )
                                                 }
-                                                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-gray-500"
+                                                className="rounded-lg border border-[#3A2F1D] bg-[#221B12] px-3 py-2 text-sm outline-none focus:border-[#D9A441]"
                                             >
 
                                                 <option value="">
@@ -350,7 +350,7 @@ function CleaningPanel({ file }) {
 
                         ) : (
 
-                            <div className="flex items-center gap-2 rounded-lg bg-gray-50 p-4 text-sm text-gray-600">
+                            <div className="flex items-center gap-2 rounded-lg bg-[#2A2116] p-4 text-sm text-[#B8AC93]">
 
                                 <CheckCircle
                                     size={18}
@@ -367,13 +367,13 @@ function CleaningPanel({ file }) {
 
                     {/* Duplicate Rows */}
 
-                    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
                         <div className="flex items-center justify-between gap-5">
 
                             <div className="flex items-center gap-3">
 
-                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                                     <Copy size={19} />
 
@@ -381,11 +381,11 @@ function CleaningPanel({ file }) {
 
                                 <div>
 
-                                    <h3 className="font-semibold text-gray-900">
+                                    <h3 className="font-display font-semibold text-[#F3ECDD]">
                                         Duplicate Rows
                                     </h3>
 
-                                    <p className="text-sm text-gray-500">
+                                    <p className="text-sm text-[#B8AC93]">
 
                                         {duplicateRows}
                                         {" "}
@@ -421,7 +421,7 @@ function CleaningPanel({ file }) {
                                         className="h-4 w-4"
                                     />
 
-                                    <span className="text-sm font-medium text-gray-700">
+                                    <span className="text-sm font-medium text-[#D9A441]">
                                         Remove
                                     </span>
 
@@ -449,7 +449,7 @@ function CleaningPanel({ file }) {
                                     !removeDuplicates
                                 )
                             }
-                            className="flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="flex items-center gap-2 rounded-lg bg-[#D9A441] px-6 py-3 font-semibold text-[#17130D] transition hover:bg-[#C2933A] disabled:cursor-not-allowed disabled:opacity-50"
                         >
 
                             {loading && (
@@ -498,9 +498,9 @@ function CleaningResult({ result }) {
 
             <div className="flex items-center gap-2">
 
-                <CheckCircle size={22} />
+                <CheckCircle size={22} className="text-[#D9A441]" />
 
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h3 className="font-display text-2xl font-semibold text-[#F3ECDD]">
                     Cleaning Complete
                 </h3>
 
@@ -524,9 +524,9 @@ function CleaningResult({ result }) {
 
             {result.changes?.length > 0 && (
 
-                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
-                    <h3 className="mb-4 font-semibold text-gray-900">
+                    <h3 className="font-display mb-4 font-semibold text-[#F3ECDD]">
                         Changes Applied
                     </h3>
 
@@ -537,7 +537,7 @@ function CleaningResult({ result }) {
 
                                 <div
                                     key={index}
-                                    className="flex gap-3 text-sm text-gray-600"
+                                    className="flex gap-3 text-sm text-[#B8AC93]"
                                 >
 
                                     <CheckCircle
@@ -563,11 +563,11 @@ function CleaningResult({ result }) {
 
             {result.preview?.length > 0 && (
 
-                <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div className="overflow-hidden rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
-                    <div className="border-b border-gray-200 p-5">
+                    <div className="border-b border-[#3A2F1D] p-5">
 
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-display font-semibold text-[#F3ECDD]">
                             Cleaned Data Preview
                         </h3>
 
@@ -578,7 +578,7 @@ function CleaningResult({ result }) {
 
                         <table className="min-w-full text-left text-sm">
 
-                            <thead className="bg-gray-50">
+                            <thead className="bg-[#2A2116]">
 
                                 <tr>
 
@@ -589,7 +589,7 @@ function CleaningResult({ result }) {
 
                                             <th
                                                 key={column}
-                                                className="whitespace-nowrap px-5 py-3 font-semibold text-gray-700"
+                                                className="whitespace-nowrap px-5 py-3 font-semibold text-[#D9A441]"
                                             >
                                                 {column}
                                             </th>
@@ -609,7 +609,7 @@ function CleaningResult({ result }) {
 
                                         <tr
                                             key={index}
-                                            className="border-t border-gray-100"
+                                            className="border-t border-[#2E2417]"
                                         >
 
                                             {Object.keys(
@@ -619,7 +619,7 @@ function CleaningResult({ result }) {
 
                                                     <td
                                                         key={column}
-                                                        className="whitespace-nowrap px-5 py-3 text-gray-600"
+                                                        className="whitespace-nowrap px-5 py-3 text-[#B8AC93]"
                                                     >
                                                         {String(
                                                             row[column] ?? ""
@@ -661,60 +661,60 @@ function SummaryCard({
 
     return (
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
-            <h3 className="mb-5 font-semibold text-gray-900">
+            <h3 className="font-display mb-5 font-semibold text-[#F3ECDD]">
                 {title}
             </h3>
 
             <div className="grid grid-cols-2 gap-4">
 
-                <div className="rounded-lg bg-gray-50 p-4">
+                <div className="rounded-lg bg-[#2A2116] p-4">
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[#B8AC93]">
                         Rows
                     </p>
 
-                    <p className="mt-1 text-xl font-bold text-gray-900">
+                    <p className="font-mono mt-1 text-xl font-bold text-[#F3ECDD]">
                         {data.rows}
                     </p>
 
                 </div>
 
 
-                <div className="rounded-lg bg-gray-50 p-4">
+                <div className="rounded-lg bg-[#2A2116] p-4">
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[#B8AC93]">
                         Columns
                     </p>
 
-                    <p className="mt-1 text-xl font-bold text-gray-900">
+                    <p className="font-mono mt-1 text-xl font-bold text-[#F3ECDD]">
                         {data.columns}
                     </p>
 
                 </div>
 
 
-                <div className="rounded-lg bg-gray-50 p-4">
+                <div className="rounded-lg bg-[#2A2116] p-4">
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[#B8AC93]">
                         Missing
                     </p>
 
-                    <p className="mt-1 text-xl font-bold text-gray-900">
+                    <p className="font-mono mt-1 text-xl font-bold text-[#F3ECDD]">
                         {data.missing_values}
                     </p>
 
                 </div>
 
 
-                <div className="rounded-lg bg-gray-50 p-4">
+                <div className="rounded-lg bg-[#2A2116] p-4">
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[#B8AC93]">
                         Duplicates
                     </p>
 
-                    <p className="mt-1 text-xl font-bold text-gray-900">
+                    <p className="font-mono mt-1 text-xl font-bold text-[#F3ECDD]">
                         {data.duplicate_rows}
                     </p>
 

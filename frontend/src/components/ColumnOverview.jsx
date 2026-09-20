@@ -9,11 +9,11 @@ function ColumnOverview({ data }) {
 
         <section className="mt-10">
 
-            <h2 className="mb-5 text-2xl font-semibold text-gray-900">
+            <h2 className="font-display mb-5 text-2xl font-semibold text-[#F3ECDD]">
                 Column Overview
             </h2>
 
-            <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
                 {data.column_names.map(
                     (column, index) => {
@@ -30,16 +30,16 @@ function ColumnOverview({ data }) {
                                 className={`flex items-center justify-between px-5 py-4 ${
                                     index !==
                                     data.column_names.length - 1
-                                        ? "border-b border-gray-100"
+                                        ? "border-b border-[#2E2417]"
                                         : ""
                                 }`}
                             >
 
-                                <span className="font-medium text-gray-800">
+                                <span className="font-medium text-[#F3ECDD]">
                                     {column}
                                 </span>
 
-                                <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+                                <span className="rounded-full bg-[#2A2116] px-3 py-1 text-xs font-medium text-[#D9A441]">
                                     {isNumeric
                                         ? "Numeric"
                                         : "Categorical"

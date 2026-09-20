@@ -72,22 +72,22 @@ function DataHealth({uploadData,profile,recommendations}) {
 
             <div className="mb-6 flex items-center gap-3">
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                     <ShieldCheck
                         size={21}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 </div>
 
                 <div>
 
-                    <h2 className="text-2xl font-semibold text-gray-900">
+                    <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
                         Data Health
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Overall quality of your dataset
                     </p>
 
@@ -98,7 +98,7 @@ function DataHealth({uploadData,profile,recommendations}) {
 
             {/* Main Card */}
 
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
 
@@ -106,15 +106,15 @@ function DataHealth({uploadData,profile,recommendations}) {
 
                     <div className="flex flex-col items-center justify-center">
 
-                        <div className="flex h-32 w-32 items-center justify-center rounded-full border-8 border-gray-200">
+                        <div className="flex h-32 w-32 items-center justify-center rounded-full border-8 border-[#3A2F1D]">
 
                             <div className="text-center">
 
-                                <p className="text-4xl font-bold text-gray-900">
+                                <p className="font-mono text-4xl font-bold text-[#F3ECDD]">
                                     {score}
                                 </p>
 
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-[#B8AC93]">
                                     / 100
                                 </p>
 
@@ -123,7 +123,7 @@ function DataHealth({uploadData,profile,recommendations}) {
                         </div>
 
 
-                        <p className="mt-4 font-semibold text-gray-900">
+                        <p className="mt-4 font-semibold text-[#F3ECDD]">
                             {scoreLabel}
                         </p>
 
@@ -136,21 +136,21 @@ function DataHealth({uploadData,profile,recommendations}) {
 
                         <div className="mb-2 flex items-center justify-between">
 
-                            <span className="text-sm font-medium text-gray-700">
+                            <span className="text-sm font-medium text-[#B8AC93]">
                                 Data Quality
                             </span>
 
-                            <span className="text-sm font-semibold text-gray-900">
+                            <span className="text-sm font-semibold text-[#F3ECDD]">
                                 {score}%
                             </span>
 
                         </div>
 
 
-                        <div className="h-3 overflow-hidden rounded-full bg-gray-100">
+                        <div className="h-3 overflow-hidden rounded-full bg-[#2A2116]">
 
                             <div
-                                className="h-full rounded-full bg-gray-900 transition-all duration-500"
+                                className="h-full rounded-full bg-[#D9A441] transition-all duration-500"
                                 style={{
                                     width: `${score}%`
                                 }}
@@ -159,7 +159,7 @@ function DataHealth({uploadData,profile,recommendations}) {
                         </div>
 
 
-                        <p className="mt-3 text-sm text-gray-500">
+                        <p className="mt-3 text-sm text-[#B8AC93]">
 
                             The score is based on missing values,
                             duplicate rows, and detected outliers.
@@ -173,7 +173,7 @@ function DataHealth({uploadData,profile,recommendations}) {
 
                 {/* Quality Checks */}
 
-                <div className="mt-8 grid grid-cols-1 gap-3 border-t border-gray-200 pt-6 md:grid-cols-3">
+                <div className="mt-8 grid grid-cols-1 gap-3 border-t border-[#3A2F1D] pt-6 md:grid-cols-3">
 
                     {/* Missing */}
 
@@ -218,7 +218,7 @@ function HealthCheck({
 
     return (
 
-        <div className="flex items-center justify-between rounded-lg bg-gray-50 p-4">
+        <div className="flex items-center justify-between rounded-lg bg-[#2A2116] p-4">
 
             <div className="flex items-center gap-3">
 
@@ -226,14 +226,14 @@ function HealthCheck({
 
                     <CheckCircle
                         size={20}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 ) : (
 
                     <AlertTriangle
                         size={20}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 )}
@@ -241,11 +241,11 @@ function HealthCheck({
 
                 <div>
 
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-[#F3ECDD]">
                         {title}
                     </p>
 
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[#B8AC93]">
 
                         {good
                             ? "No issues detected"
@@ -263,14 +263,14 @@ function HealthCheck({
 
                 <CheckCircle
                     size={18}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
             ) : (
 
                 <XCircle
                     size={18}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
             )}

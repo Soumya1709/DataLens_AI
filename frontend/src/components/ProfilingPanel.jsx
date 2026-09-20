@@ -66,22 +66,22 @@ function ProfilingPanel({ file,profile, setProfile }) {
 
             <div className="mb-6 flex items-center gap-3">
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                     <BarChart3
                         size={21}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 </div>
 
                 <div>
 
-                    <h2 className="text-2xl font-semibold text-gray-900">
+                    <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
                         Data Profile
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Statistical analysis of your dataset
                     </p>
 
@@ -92,7 +92,7 @@ function ProfilingPanel({ file,profile, setProfile }) {
 
             {loading && (
 
-                <div className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white p-5 text-gray-600 shadow-sm">
+                <div className="flex items-center gap-2 rounded-xl border border-[#3A2F1D] bg-[#221B12] p-5 text-[#B8AC93] shadow-sm">
 
                     <Loader2
                         size={20}
@@ -108,7 +108,7 @@ function ProfilingPanel({ file,profile, setProfile }) {
 
             {error && (
 
-                <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
 
                     {error}
 
@@ -169,22 +169,22 @@ function NumericStatistics({ data }) {
 
     return (
 
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
-            <div className="flex items-center gap-3 border-b border-gray-200 p-5">
+            <div className="flex items-center gap-3 border-b border-[#3A2F1D] p-5">
 
                 <Calculator
                     size={20}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
                 <div>
 
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-display font-semibold text-[#F3ECDD]">
                         Numeric Statistics
                     </h3>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Summary statistics for numerical columns
                     </p>
 
@@ -197,39 +197,39 @@ function NumericStatistics({ data }) {
 
                 <table className="min-w-full text-left text-sm">
 
-                    <thead className="bg-gray-50">
+                    <thead className="bg-[#2A2116]">
 
                         <tr>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Column
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Count
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Mean
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Median
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Min
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Max
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Std
                             </th>
 
-                            <th className="px-5 py-3 font-semibold text-gray-700">
+                            <th className="px-5 py-3 font-semibold text-[#D9A441]">
                                 Q1
                             </th>
 
@@ -245,38 +245,38 @@ function NumericStatistics({ data }) {
 
                                 <tr
                                     key={column}
-                                    className="border-t border-gray-100"
+                                    className="border-t border-[#2E2417]"
                                 >
 
-                                    <td className="px-5 py-4 font-medium text-gray-900">
+                                    <td className="px-5 py-4 font-medium text-[#F3ECDD]">
                                         {column}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.count}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.mean}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.median}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.min}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.max}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.std}
                                     </td>
 
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 text-[#B8AC93]">
                                         {stats.q1}
                                     </td>
 
@@ -308,22 +308,22 @@ function CategoricalStatistics({ data}) {
 
     return (
 
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
-            <div className="flex items-center gap-3 border-b border-gray-200 p-5">
+            <div className="flex items-center gap-3 border-b border-[#3A2F1D] p-5">
 
                 <Tag
                     size={20}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
                 <div>
 
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-display font-semibold text-[#F3ECDD]">
                         Categorical Statistics
                     </h3>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Distribution of categorical columns
                     </p>
 
@@ -339,10 +339,10 @@ function CategoricalStatistics({ data}) {
 
                         <div
                             key={column}
-                            className="rounded-lg bg-gray-50 p-5"
+                            className="rounded-lg bg-[#2A2116] p-5"
                         >
 
-                            <h4 className="font-semibold text-gray-900">
+                            <h4 className="font-display font-semibold text-[#F3ECDD]">
                                 {column}
                             </h4>
 
@@ -351,11 +351,11 @@ function CategoricalStatistics({ data}) {
 
                                 <div>
 
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-[#B8AC93]">
                                         Unique
                                     </p>
 
-                                    <p className="mt-1 font-semibold text-gray-900">
+                                    <p className="mt-1 font-semibold text-[#F3ECDD]">
                                         {stats.unique_values}
                                     </p>
 
@@ -364,11 +364,11 @@ function CategoricalStatistics({ data}) {
 
                                 <div>
 
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-[#B8AC93]">
                                         Most Frequent
                                     </p>
 
-                                    <p className="mt-1 font-semibold text-gray-900">
+                                    <p className="mt-1 font-semibold text-[#F3ECDD]">
                                         {stats.most_frequent}
                                     </p>
 
@@ -377,11 +377,11 @@ function CategoricalStatistics({ data}) {
 
                                 <div>
 
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-[#B8AC93]">
                                         Frequency
                                     </p>
 
-                                    <p className="mt-1 font-semibold text-gray-900">
+                                    <p className="mt-1 font-semibold text-[#F3ECDD]">
                                         {stats.frequency}
                                     </p>
 
@@ -390,10 +390,10 @@ function CategoricalStatistics({ data}) {
                             </div>
 
 
-                            <p className="mt-4 text-sm text-gray-500">
+                            <p className="mt-4 text-sm text-[#B8AC93]">
 
                                 Represents{" "}
-                                <span className="font-semibold text-gray-800">
+                                <span className="font-semibold text-[#F3ECDD]">
                                     {stats.percentage}%
                                 </span>
                                 {" "}
@@ -425,22 +425,22 @@ function OutlierAnalysis({data}) {
 
     return (
 
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
-            <div className="flex items-center gap-3 border-b border-gray-200 p-5">
+            <div className="flex items-center gap-3 border-b border-[#3A2F1D] p-5">
 
                 <AlertCircle
                     size={20}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
                 <div>
 
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-display font-semibold text-[#F3ECDD]">
                         Outlier Detection
                     </h3>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Potential unusual values detected using IQR
                     </p>
 
@@ -462,17 +462,17 @@ function OutlierAnalysis({data}) {
 
                             <div
                                 key={column}
-                                className="rounded-lg bg-gray-50 p-5"
+                                className="rounded-lg bg-[#2A2116] p-5"
                             >
 
                                 <div className="flex items-center justify-between">
 
-                                    <h4 className="font-semibold text-gray-900">
+                                    <h4 className="font-display font-semibold text-[#F3ECDD]">
                                         {column}
                                     </h4>
 
 
-                                    <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-gray-700">
+                                    <span className="rounded-full bg-[#221B12] px-3 py-1 text-xs font-medium text-[#D9A441]">
 
                                         {stats.outlier_count}
                                         {" "}
@@ -491,11 +491,11 @@ function OutlierAnalysis({data}) {
 
                                     <div>
 
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs text-[#B8AC93]">
                                             Lower Bound
                                         </p>
 
-                                        <p className="mt-1 font-medium text-gray-800">
+                                        <p className="mt-1 font-medium text-[#F3ECDD]">
                                             {stats.lower_bound}
                                         </p>
 
@@ -504,11 +504,11 @@ function OutlierAnalysis({data}) {
 
                                     <div>
 
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs text-[#B8AC93]">
                                             Upper Bound
                                         </p>
 
-                                        <p className="mt-1 font-medium text-gray-800">
+                                        <p className="mt-1 font-medium text-[#F3ECDD]">
                                             {stats.upper_bound}
                                         </p>
 
@@ -517,7 +517,7 @@ function OutlierAnalysis({data}) {
                                 </div>
 
 
-                                <p className="mt-4 text-sm text-gray-500">
+                                <p className="mt-4 text-sm text-[#B8AC93]">
 
                                     {hasOutliers
                                         ? "Potential outliers detected."
@@ -602,22 +602,22 @@ function CorrelationAnalysis({
 
     return (
 
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] shadow-sm">
 
-            <div className="flex items-center gap-3 border-b border-gray-200 p-5">
+            <div className="flex items-center gap-3 border-b border-[#3A2F1D] p-5">
 
                 <GitCompare
                     size={20}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
                 <div>
 
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-display font-semibold text-[#F3ECDD]">
                         Correlation Analysis
                     </h3>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Relationships between numerical variables
                     </p>
 
@@ -630,7 +630,7 @@ function CorrelationAnalysis({
 
                 {correlations.length === 0 ? (
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         No correlations available.
                     </p>
 
@@ -643,20 +643,20 @@ function CorrelationAnalysis({
 
                                 <div
                                     key={`${item.columnA}-${item.columnB}`}
-                                    className="flex flex-col gap-3 rounded-lg bg-gray-50 p-4 sm:flex-row sm:items-center sm:justify-between"
+                                    className="flex flex-col gap-3 rounded-lg bg-[#2A2116] p-4 sm:flex-row sm:items-center sm:justify-between"
                                 >
 
                                     <div>
 
-                                        <span className="font-medium text-gray-900">
+                                        <span className="font-medium text-[#F3ECDD]">
                                             {item.columnA}
                                         </span>
 
-                                        <span className="mx-2 text-gray-400">
+                                        <span className="mx-2 text-[#8F8368]">
                                             ↔
                                         </span>
 
-                                        <span className="font-medium text-gray-900">
+                                        <span className="font-medium text-[#F3ECDD]">
                                             {item.columnB}
                                         </span>
 
@@ -665,11 +665,11 @@ function CorrelationAnalysis({
 
                                     <div className="flex items-center gap-3">
 
-                                        <span className="text-sm text-gray-500">
+                                        <span className="text-sm text-[#B8AC93]">
                                             Correlation
                                         </span>
 
-                                        <span className="rounded-full bg-white px-3 py-1 font-semibold text-gray-900">
+                                        <span className="rounded-full bg-[#221B12] px-3 py-1 font-semibold text-[#F3ECDD]">
 
                                             {item.correlation}
 

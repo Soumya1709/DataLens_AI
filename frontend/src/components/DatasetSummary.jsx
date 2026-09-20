@@ -49,7 +49,7 @@ function DatasetSummary({ data }) {
 
         <section className="mt-10">
 
-            <h2 className="mb-5 text-2xl font-semibold text-gray-900">
+            <h2 className="font-display mb-5 text-2xl font-semibold text-[#F3ECDD]">
                 Dataset Overview
             </h2>
 
@@ -63,23 +63,23 @@ function DatasetSummary({ data }) {
 
                         <div
                             key={card.title}
-                            className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+                            className="flex items-center gap-4 rounded-xl border border-[#3A2F1D] bg-[#221B12] p-5 shadow-sm"
                         >
 
-                            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-100">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#2A2116]">
                                 <Icon
                                     size={21}
-                                    className="text-gray-700"
+                                    className="text-[#D9A441]"
                                 />
                             </div>
 
                             <div>
 
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-[#B8AC93]">
                                     {card.title}
                                 </p>
 
-                                <h3 className="mt-1 text-2xl font-bold text-gray-900">
+                                <h3 className="font-mono mt-1 text-2xl font-bold text-[#F3ECDD]">
                                     {card.value}
                                 </h3>
 

@@ -1,1 +1,18 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+ 
+html,
+body {
+  background-color: #17130D;
+  color: #F3ECDD;
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+}
+ 
+.font-display {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+}
+ 
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}

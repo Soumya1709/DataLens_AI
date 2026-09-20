@@ -130,11 +130,11 @@ function AskData({ file }) {
 
             <div className="mb-6 flex items-center gap-3">
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2A2116]">
 
                     <MessageCircle
                         size={21}
-                        className="text-gray-700"
+                        className="text-[#D9A441]"
                     />
 
                 </div>
@@ -142,11 +142,11 @@ function AskData({ file }) {
 
                 <div>
 
-                    <h2 className="text-2xl font-semibold text-gray-900">
+                    <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
                         Ask Your Data
                     </h2>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#B8AC93]">
                         Ask questions about your dataset in natural language
                     </p>
 
@@ -157,13 +157,13 @@ function AskData({ file }) {
 
             {/* Main Card */}
 
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-[#3A2F1D] bg-[#221B12] p-6 shadow-sm">
 
                 {/* Question */}
 
                 <div>
 
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
+                    <label className="mb-2 block text-sm font-medium text-[#B8AC93]">
 
                         Your Question
 
@@ -180,7 +180,7 @@ function AskData({ file }) {
                         onKeyDown={handleKeyDown}
                         placeholder="e.g. What is the strongest relationship in my dataset?"
                         rows={3}
-                        className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-gray-500"
+                        className="w-full resize-none rounded-lg border border-[#3A2F1D] bg-[#17130D] px-4 py-3 text-sm text-[#F3ECDD] outline-none placeholder:text-[#8F8368] focus:border-[#D9A441]"
                     />
 
                 </div>
@@ -197,7 +197,7 @@ function AskData({ file }) {
                             loading ||
                             !question.trim()
                         }
-                        className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="inline-flex items-center gap-2 rounded-lg bg-[#D9A441] px-5 py-2.5 text-sm font-medium text-[#17130D] transition hover:bg-[#C2933A] disabled:cursor-not-allowed disabled:opacity-50"
                     >
 
                         {loading ? (
@@ -234,14 +234,14 @@ function AskData({ file }) {
 
                 {error && (
 
-                    <div className="mt-4 flex gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+                    <div className="mt-4 flex gap-3 rounded-lg border border-[#3A2F1D] bg-[#2A2116] p-4">
 
                         <AlertCircle
                             size={19}
-                            className="shrink-0 text-gray-700"
+                            className="shrink-0 text-[#D9A441]"
                         />
 
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-[#B8AC93]">
                             {error}
                         </p>
 
@@ -254,25 +254,25 @@ function AskData({ file }) {
 
                 {answer && !loading && (
 
-                    <div className="mt-6 border-t border-gray-200 pt-6">
+                    <div className="mt-6 border-t border-[#3A2F1D] pt-6">
 
                         <div className="mb-3 flex items-center gap-2">
 
                             <Sparkles
                                 size={18}
-                                className="text-gray-700"
+                                className="text-[#D9A441]"
                             />
 
-                            <h3 className="font-semibold text-gray-900">
+                            <h3 className="font-display font-semibold text-[#F3ECDD]">
                                 DataLens AI
                             </h3>
 
                         </div>
 
 
-                        <div className="rounded-lg bg-gray-50 p-5">
+                        <div className="rounded-lg bg-[#2A2116] p-5">
 
-                            <p className="whitespace-pre-wrap text-sm leading-7 text-gray-700">
+                            <p className="whitespace-pre-wrap text-sm leading-7 text-[#D8CFBB]">
 
                                 {answer}
 
@@ -291,7 +291,7 @@ function AskData({ file }) {
 
             <div className="mt-4">
 
-                <p className="mb-3 text-xs font-medium uppercase tracking-wide text-gray-500">
+                <p className="mb-3 text-xs font-medium uppercase tracking-wide text-[#B8AC93]">
                     Try asking
                 </p>
 
@@ -314,7 +314,7 @@ function AskData({ file }) {
                                         example
                                     )
                                 }
-                                className="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs text-gray-600 transition hover:border-gray-400 hover:text-gray-900"
+                                className="rounded-full border border-[#3A2F1D] bg-[#221B12] px-3 py-2 text-xs text-[#B8AC93] transition hover:border-[#5C4E33] hover:text-[#F3ECDD]"
                             >
 
                                 {example}

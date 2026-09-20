@@ -9,10 +9,10 @@ function LoadingSpinner({text = "Loading..."}) {
 
             <Loader2
                 size={22}
-                className="animate-spin text-gray-700"
+                className="animate-spin text-[#D9A441]"
             />
 
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-[#B8AC93]">
                 {text}
             </span>
 

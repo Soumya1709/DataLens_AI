@@ -142,15 +142,15 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
 
     return (
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-5 text-center shadow-sm sm:p-10">
+        <div className="rounded-2xl border border-[#3A2F1D] bg-[#221B12] p-5 text-center shadow-sm sm:p-10">
 
             {/* Icon */}
 
-            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-100">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#2A2116]">
 
                 <FileSpreadsheet
                     size={34}
-                    className="text-gray-700"
+                    className="text-[#D9A441]"
                 />
 
             </div>
@@ -158,14 +158,14 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
 
             {/* Heading */}
 
-            <h2 className="text-2xl font-semibold text-gray-900">
+            <h2 className="font-display text-3xl font-semibold text-[#F3ECDD]">
 
                 Upload your dataset
 
             </h2>
 
 
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 text-[#B8AC93]">
 
                 Analyze CSV or Excel files with DataLens AI
 
@@ -189,25 +189,25 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
                     transition
                     ${
                         isDragging
-                            ? "border-gray-900 bg-gray-100"
-                            : "border-gray-300 bg-gray-50"
+                            ? "border-[#D9A441] bg-[#2A2116]"
+                            : "border-[#3A2F1D] bg-[#2A2116]"
                     }
                 `}
             >
 
                 <div className="flex flex-col items-center">
 
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#221B12] shadow-sm">
 
                         <Upload
                             size={22}
-                            className="text-gray-700"
+                            className="text-[#D9A441]"
                         />
 
                     </div>
 
 
-                    <p className="mt-4 text-sm font-medium text-gray-900">
+                    <p className="mt-4 text-sm font-medium text-[#F3ECDD]">
 
                         {isDragging
                             ? "Drop your file here"
@@ -217,7 +217,7 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
                     </p>
 
 
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-sm text-[#B8AC93]">
 
                         or click the button below to browse
 
@@ -249,7 +249,7 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
 
                     <label
                         htmlFor="dataset-upload"
-                        className="mt-5 inline-flex cursor-pointer items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+                        className="mt-5 inline-flex cursor-pointer items-center gap-2 rounded-lg border border-[#3A2F1D] bg-[#221B12] px-5 py-2.5 text-sm font-medium text-[#D9A441] transition hover:bg-[#2A2116]"
                     >
 
                         <Upload size={17} />
@@ -259,7 +259,7 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
                     </label>
 
 
-                    <p className="mt-3 text-xs text-gray-400">
+                    <p className="mt-3 text-xs text-[#8F8368]">
 
                         CSV, XLSX or XLS · Maximum 10 MB
 
@@ -274,16 +274,16 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
 
             {uploadError && (
 
-                <div className="mx-auto mt-4 flex max-w-xl items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-4 text-left">
+                <div className="mx-auto mt-4 flex max-w-xl items-center justify-between rounded-lg border border-[#3A2F1D] bg-[#2A2116] p-4 text-left">
 
                     <div className="flex items-center gap-3">
 
                         <AlertCircle
                             size={19}
-                            className="shrink-0 text-gray-700"
+                            className="shrink-0 text-[#D9A441]"
                         />
 
-                        <p className="text-sm text-gray-700">
+                        <p className="text-sm text-[#D9A441]">
 
                             {uploadError}
 
@@ -297,7 +297,7 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
                         onClick={() =>
                             setUploadError(null)
                         }
-                        className="text-gray-400 hover:text-gray-700"
+                        className="text-[#8F8368] hover:text-[#D9A441]"
                     >
 
                         <X size={17} />
@@ -313,26 +313,26 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
 
             {file && (
 
-                <div className="mx-auto mt-5 flex max-w-xl items-center justify-between rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <div className="mx-auto mt-5 flex max-w-xl items-center justify-between rounded-lg border border-[#3A2F1D] bg-[#2A2116] p-4">
 
                     <div className="flex items-center gap-3 text-left">
 
                         <FileSpreadsheet
                             size={20}
-                            className="shrink-0 text-gray-700"
+                            className="shrink-0 text-[#D9A441]"
                         />
 
 
                         <div>
 
-                            <p className="min-w-0 break-all text-sm font-medium text-gray-900">
+                            <p className="min-w-0 break-all text-sm font-medium text-[#F3ECDD]">
 
                                 {file.name}
 
                             </p>
 
 
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-[#B8AC93]">
 
                                 {(
                                     file.size /
@@ -351,7 +351,7 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
                         type="button"
                         onClick={handleRemove}
                         disabled={loading}
-                        className="rounded-md p-1.5 text-gray-400 transition hover:bg-white hover:text-gray-700 disabled:cursor-not-allowed"
+                        className="rounded-md p-1.5 text-[#8F8368] transition hover:bg-[#221B12] hover:text-[#D9A441] disabled:cursor-not-allowed"
                     >
 
                         <X size={18} />
@@ -369,13 +369,13 @@ function FileUpload({file,onFileChange,onUpload,loading}) {
     type="button"
     onClick={onUpload}
     disabled={!file || loading}
-    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+    className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#D9A441] px-6 py-3 font-semibold text-[#17130D] transition hover:bg-[#C2933A] disabled:cursor-not-allowed disabled:opacity-50"
 >
 
     {loading ? (
 
         <>
-            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#17130D] border-t-transparent" />
 
             Uploading...
         </>
