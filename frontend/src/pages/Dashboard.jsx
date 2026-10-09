@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-import {
-    uploadDataset,
-    getAIAnalysis,
-    exportReport
-} from "../services/api";
+import {uploadDataset,getAIAnalysis,exportReport} from "../services/api";
 
 import FileUpload from "../components/FileUpload";
 
@@ -22,20 +18,15 @@ import AskData from "../components/AskData";
 
 function Dashboard() {
 
-    const [file, setFile] =
-        useState(null);
+    const [file, setFile] =useState(null);
 
-    const [uploadData, setUploadData] =
-        useState(null);
+    const [uploadData, setUploadData] =useState(null);
 
-    const [aiAnalysis, setAIAnalysis] =
-        useState(null);
+    const [aiAnalysis, setAIAnalysis] =useState(null);
 
-    const [loading, setLoading] =
-        useState(false);
+    const [loading, setLoading] =useState(false);
 
-    const [profile, setProfile] =
-        useState(null);
+    const [profile, setProfile] =useState(null);
 
 
     const handleFileChange = (selectedFile) => {
